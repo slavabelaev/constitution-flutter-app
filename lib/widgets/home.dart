@@ -49,15 +49,6 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('Конституция ПМР'),
         actions: <Widget>[
-          Consumer<AppModel>(
-            builder: (context, app, child) => IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () => showSearch(
-                context: context,
-                delegate: AppSearchDelegate(app.articles)
-              )
-            )
-          ),
           _LanguagePopupMenuButton()
         ],
       ),

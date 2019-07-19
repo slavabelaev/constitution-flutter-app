@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../classes/article.dart';
 import '../classes/paragraph.dart';
-import '../classes/sub_paragraph.dart';
 import '../widgets/article_list_view.dart';
 
 class AppSearchDelegate extends SearchDelegate<int> {
