@@ -49,34 +49,27 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('Конституция ПМР'),
         actions: <Widget>[
-          _LanguagePopupMenuButton()
+          Consumer<AppModel>(
+            builder: (context, app, child) =>
+              IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () => showSearch(
+                  context: context,
+                  delegate: AppSearchDelegate(app.articles)
+                )
+              ),
+          ),
+          IconButton(
+            icon: Icon(Icons.more_vert),
+            onPressed: () => null
+          )
+          //_LanguagePopupMenuButton()
         ],
       ),
       body: buildBodyWidget(),
       bottomNavigationBar: AppBottomNavigationBar(
         onIndexChange: handleIndexChange
       ),
-    );
-  }
-}
-
-class _LanguagePopupMenuButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return PopupMenuButton(
-        icon: Icon(Icons.language),
-        itemBuilder: (context) => [
-          PopupMenuItem(
-              child: Text('Русский')
-          ),
-          PopupMenuItem(
-              child: Text('Молдавский')
-          ),
-          PopupMenuItem(
-              child: Text('Украинский')
-          )
-        ]
     );
   }
 }

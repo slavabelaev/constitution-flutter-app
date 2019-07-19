@@ -27,12 +27,34 @@ class App extends StatelessWidget {
     backgroundColor: Colors.black,
     bottomAppBarColor: Colors.grey[900],
 
+    cardColor: Colors.grey[900],
+
+    cardTheme: CardTheme(
+      color: Colors.grey[900]
+    ),
+
+    scaffoldBackgroundColor: Color.fromRGBO(18, 18, 18, 1),
+
+    appBarTheme: AppBarTheme(
+      color: Colors.grey[900],
+    ),
+    bottomAppBarTheme: BottomAppBarTheme(
+      color: Colors.red,
+    ),
+
+
     // Define the default TextTheme. Use this to specify the default
     // text styling for headlines, titles, bodies of text, and more.
     textTheme: TextTheme(
       headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-      title: TextStyle(fontSize: 20.0),
-      body1: TextStyle(fontSize: 16.0, height: 1.5, fontFamily: 'Hind'),
+      title: TextStyle(
+        fontSize: 20.0,
+      ),
+      body1: TextStyle(
+        fontSize: 16.0,
+        height: 1.5,
+        fontFamily: 'Hind',
+      ),
     ),
   );
 
