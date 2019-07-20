@@ -52,7 +52,7 @@ class App extends StatelessWidget {
       body1: TextStyle(
         fontSize: 16.0,
         height: 1.5,
-        fontFamily: 'Hind',
+        //fontFamily: 'Hind',
         color: Colors.white70
       ),
     ),

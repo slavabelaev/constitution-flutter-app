@@ -19,7 +19,7 @@ class ContentView extends StatelessWidget {
       fontWeight: FontWeight.w500
   );
 
-  void _handleTap(BuildContext context, String title, int from, int to) {
+  void _handleTap(BuildContext context, String title, num from, num to) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) =>
