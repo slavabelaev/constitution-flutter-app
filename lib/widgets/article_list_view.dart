@@ -3,15 +3,20 @@ import '../classes/article.dart';
 import '../widgets/article_card.dart';
 
 class ArticleListView extends StatelessWidget {
-  ArticleListView(this.articles);
+  ArticleListView(this.articles, {this.emptyMessage});
 
   final List<Article> articles;
+  String emptyMessage;
 
   @override
   Widget build(BuildContext context) {
+    emptyMessage = emptyMessage != null ? emptyMessage : 'Ничего нет';
     if (articles.length == 0) {
       return Center(
-        child: Text('Ничего нет'),
+        child: Text(
+            emptyMessage,
+            style: Theme.of(context).textTheme.title
+        ),
       );
     }
       

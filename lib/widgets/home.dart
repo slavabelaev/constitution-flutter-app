@@ -21,14 +21,23 @@ class _HomeState extends State<Home> {
     switch(_currentIndex) {
       case 1:
         bodyWidget = Consumer<AppModel>(
-            builder: (context, app, child) => ArticleListView(app.articles)
+            builder: (context, app, child) => ArticleListView(
+              app.articles,
+              emptyMessage: 'Нет статей',
+            )
         );
-      break;
+        break;
       case 2:
         bodyWidget = Consumer<AppModel>(
-          builder: (context, app, child) => ArticleListView(app.favoriteArticles)
+          builder: (context, app, child) => ArticleListView(
+            app.favoriteArticles,
+            emptyMessage: 'Нет закладок',
+          )
         );
-      break;
+        break;
+      case 3:
+        bodyWidget = Settings();
+        break;
       default:
         bodyWidget = ContentView(content);
     }
@@ -58,10 +67,6 @@ class _HomeState extends State<Home> {
                   delegate: AppSearchDelegate(app.articles)
                 )
               ),
-          ),
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            onPressed: () => null
           )
           //_LanguagePopupMenuButton()
         ],
@@ -70,6 +75,21 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: AppBottomNavigationBar(
         onIndexChange: handleIndexChange
       ),
+    );
+  }
+}
+
+class Settings extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return ListView(
+      children: <Widget>[
+        ListTile(
+          title: Text('Темная тема'),
+          trailing: Switch(value: true, onChanged: null),
+        )
+      ],
     );
   }
 }

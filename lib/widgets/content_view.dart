@@ -34,7 +34,7 @@ class ContentView extends StatelessWidget {
         child: Text(
           section.name,
           style: TextStyle(
-              fontWeight: FontWeight.bold
+              fontWeight: FontWeight.w500
           )
         ),
         backgroundColor: Colors.grey[900],
@@ -42,7 +42,9 @@ class ContentView extends StatelessWidget {
       title: Text(
         section.title,
         style: TextStyle(
-          height: 1.25
+          height: 1.25,
+          color: Color.fromRGBO(255, 255, 255, 0.87),
+          fontWeight: FontWeight.w500
         )
       ),
       subtitle: Text('Статьи ${section.from}-${section.to}'),
@@ -57,15 +59,17 @@ class ContentView extends StatelessWidget {
         child: Text(
             chapter.number.toString(),
             style: TextStyle(
-              fontWeight: FontWeight.bold
+              fontWeight: FontWeight.w500
             )
         ),
       ),
       title: Text(
-          chapter.title,
-          style: TextStyle(
-              height: 1.25
-          )
+        chapter.title,
+        style: TextStyle(
+          color: Color.fromRGBO(255, 255, 255, 0.87),
+          height: 1.25,
+          fontWeight: FontWeight.w500
+        ),
       ),
       subtitle: Text('Статьи ${chapter.from}-${chapter.to}'),
       onTap: () => handleTap(context, chapter.title, chapter.from, chapter.to),
@@ -81,7 +85,9 @@ class ContentView extends StatelessWidget {
       title: Text(
         section.title,
         style: TextStyle(
-            height: 1.25
+            height: 1.25,
+            color: Color.fromRGBO(255, 255, 255, 0.87),
+            fontWeight: FontWeight.w500
         )
       ),
       children: section.chapters.map(

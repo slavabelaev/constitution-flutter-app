@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../models/app_model.dart';
-import '../widgets/app_search_delegate.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class AppBottomNavigationBar extends StatefulWidget {
   AppBottomNavigationBar({this.onIndexChange});
@@ -24,27 +22,34 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return BottomNavigationBar(
+    return Container(
+      child: BottomNavigationBar(
         showUnselectedLabels: true,
         currentIndex: _selectedIndex,
         onTap: (selectedIndex) =>  handleTap(selectedIndex),
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.description), title: Text('Содержание')
+              icon: Icon(MdiIcons.bookOutline),
+              activeIcon: Icon(MdiIcons.book),
+              title: Text('По темам')
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.subject), title: Text('Все статьи')
+              icon: Icon(MdiIcons.fileDocumentBoxMultipleOutline),
+              activeIcon: Icon(MdiIcons.fileDocumentBoxMultiple),
+              title: Text('Статьи')
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              activeIcon: Icon(Icons.favorite),
-              title: Text('Избраные')
+              icon: Icon(MdiIcons.bookmarkMultipleOutline),
+              activeIcon: Icon(MdiIcons.bookmarkMultiple),
+              title: Text('Закладки')
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
+              icon: Icon(MdiIcons.settingsOutline),
+              activeIcon: Icon(MdiIcons.settings),
               title: Text('Настройки')
           ),
-        ]
+        ],
+      )
     );
   }
 }

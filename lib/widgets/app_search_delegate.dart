@@ -81,7 +81,10 @@ class AppSearchDelegate extends SearchDelegate<int> {
         ? _history
         : articles.where(_hasSuggestions).toList();
 
-    return ArticleListView(suggestions);
+    return ArticleListView(
+        suggestions,
+        emptyMessage: query.isEmpty ? 'Начинайте вводить' : 'Ничего не найдено'
+    );
   }
 
   @override
