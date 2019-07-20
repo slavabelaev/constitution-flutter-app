@@ -18,71 +18,88 @@ class ArticleCard extends StatefulWidget {
 class _ArticleCardState extends State<ArticleCard> {
   bool checked = false;
 
-  void toggleCheck(Article article) {
+  void _toggleCheck(Article article) {
     setState(() => checked = !checked);
   }
 
-  Widget buildSubParagraphs(List<SubParagraph> items) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children:
-      items.map((item) => Container(
-        child: Text.rich(TextSpan(
+  final TextStyle _subParagraphTitleStyle = TextStyle(
+      fontWeight: FontWeight.bold
+  );
+  final TextStyle _paragraphTitleStyle = TextStyle(
+      fontSize: 18.0,
+      height: 1,
+      fontWeight: FontWeight.w600
+  );
+
+  Widget _buildSubParagraph(SubParagraph subParagraph, bool isLast) {
+    return Container(
+      child: Text.rich(TextSpan(
           children: [
             TextSpan(
-              text: '${item.name}) ',
-              style: TextStyle(fontWeight: FontWeight.bold)
+                text: '${subParagraph.name}) ',
+                style: _subParagraphTitleStyle
             ),
-            TextSpan(text: '${item.text}')
+            TextSpan(text: '${subParagraph.text}')
           ]
-        )),
-        margin:  EdgeInsets.only(bottom: (item != items.last) ? 16.0 : 0),
-      )).toList(),
+      )),
+      margin: EdgeInsets.only(bottom: isLast ? 0 : 16.0),
     );
   }
 
-  Widget buildParagraphs(List<Paragraph> items) {
+  Widget _buildSubParagraphs(List<SubParagraph> subParagraphs) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: subParagraphs.map(
+        (item) => _buildSubParagraph(item, item == subParagraphs.last)
+      ).toList(),
+    );
+  }
+
+  Widget _buildParagraph(Paragraph paragraph) {
+    bool _hasIntroduction = (paragraph.introduction != null);
+    bool _hasSubParagraphs = (paragraph.subParagraphs != null);
+    bool _hasConclusion = (paragraph.conclusion != null);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        CustomDivider(),
+        Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    child: Text(
+                      'Пункт ${paragraph.name}',
+                      style: _paragraphTitleStyle,
+                    ),
+                    margin: const EdgeInsets.only(bottom: 16.0),
+                  ),
+                  _hasIntroduction ? _buildSplitText(paragraph.introduction) : Container(),
+                ],
+              ),
+              _hasSubParagraphs ? _buildSubParagraphs(paragraph.subParagraphs) : Container(),
+              _hasConclusion ? _buildSplitText(paragraph.conclusion) : Container()
+            ],
+          ),
+          padding: const EdgeInsets.all(16.0),
+        )
+      ],
+    );
+  }
+
+  Widget _buildParagraphs() {
+    List<Paragraph> paragraphs = widget.article.paragraphs;
+
+    if (paragraphs == null) return Container();
+
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: items.map((item) =>
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              CustomDivider(),
-              Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            'Пункт ${item.name}',
-                            style: TextStyle(
-                                fontSize: 18.0,
-                                height: 1,
-                                fontWeight: FontWeight.w600
-                            ),
-                          ),
-                          margin: const EdgeInsets.only(bottom: 16.0),
-                        ),
-                        if (item.introduction != null)
-                          buildText(item.introduction),
-                      ],
-                    ),
-                    if (item.subParagraphs != null)
-                      buildSubParagraphs(item.subParagraphs),
-                    if (item.conclusion != null)
-                      buildText(item.conclusion)
-                  ],
-                ),
-                padding: const EdgeInsets.all(16.0),
-              )
-            ],
-          )
-        ).toList(),
+        children: paragraphs.map(_buildParagraph).toList(),
       )
     );
   }
@@ -119,68 +136,81 @@ class _ArticleCardState extends State<ArticleCard> {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    Article article = widget.article;
-
-    return Card(
-      child: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Container(
-                  child: Text(
-                      'Статья ${article.number}',
-                      style: Theme.of(context).textTheme.title
-                  ),
-                  padding: const EdgeInsets.all(16.0),
-                )
-              ),
-              IconButton(
-                icon: Icon(Icons.share),
-                onPressed: () => _shareArticle(article)
-              ),
-              Consumer<AppModel>(
-                builder: (context, appModel, child) => IconButton(
-                    icon:
-                    Icon(appModel.containsInFavorites(article) ? Icons.bookmark : Icons.bookmark_border),
-                    onPressed: () {
-                      appModel.toggleFavorite(article);
-                      toggleCheck(article);
-                    }),
-              )
-            ],
-          ),
-          if (article.text != null) Container(
-            child: buildText(article.text),
-            padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
-          ),
-          if (article.paragraphs != null) buildParagraphs(article.paragraphs)
-        ],
-      ),
-    );
-  }
-
-  Widget buildText(String text) {
+  Widget _buildSplitText(String text) {
     List<String> textElements = text.split('\r\n\r\n');
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: textElements.map(
-        (text) => Container(
-          child: Text(text, style: Theme.of(context).textTheme.body1),
-          margin: EdgeInsets.only(bottom: text != textElements.last ? 16.0 : 0),
-        )
-      ).toList()
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: textElements.map(
+            (text) => Container(
+              child: Text(text, style: Theme.of(context).textTheme.body1),
+              margin: EdgeInsets.only(bottom: text != textElements.last ? 16.0 : 0),
+            )
+        ).toList()
     );
   }
+
+  Widget _buildCardHeader() {
+    Article article = widget.article;
+
+    return Row(
+      children: <Widget>[
+        Expanded(
+            child: Container(
+              child: Text(
+                  'Статья ${article.number}',
+                  style: Theme.of(context).textTheme.title
+              ),
+              padding: const EdgeInsets.all(16.0),
+            )
+        ),
+        IconButton(
+            icon: Icon(Icons.share),
+            onPressed: () => _shareArticle(article)
+        ),
+        Consumer<AppModel>(
+          builder: (context, appModel, child) => IconButton(
+              icon:
+              Icon(appModel.containsInFavorites(article) ? Icons.bookmark : Icons.bookmark_border),
+              onPressed: () {
+                appModel.toggleFavorite(article);
+                _toggleCheck(article);
+              }
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _buildArticleText() {
+    Article _article = widget.article;
+
+    if (_article.text == null) return Container();
+
+    return Container(
+      child: _buildSplitText(_article.text),
+      padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Column(
+        children: <Widget>[
+          _buildCardHeader(),
+          _buildArticleText(),
+          _buildParagraphs()
+        ],
+      )
+    );
+  }
+
 }
 
 class CustomDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
       height: 1,
       decoration: BoxDecoration(

@@ -10,73 +10,70 @@ class ContentView extends StatelessWidget {
   ContentView(this.content);
 
   final List<Section> content;
+  final TextStyle _titleStyle = TextStyle(
+      color: Color.fromRGBO(255, 255, 255, 0.87),
+      height: 1.25,
+      fontWeight: FontWeight.w500
+  );
+  final TextStyle _leadingStyle = TextStyle(
+      fontWeight: FontWeight.w500
+  );
 
-  void handleTap(BuildContext context, String title, int from, int to) {
+  void _handleTap(BuildContext context, String title, int from, int to) {
     Navigator.of(context).push(
-        MaterialPageRoute(
-            builder: (context) =>
-                Consumer<AppModel>(builder: (context, appModel, child) {
-                  List<Article> sectionArticles = appModel.articles.where(
-                    (article) => (article.number >= from && article.number <= to)
-                  ).toList();
-                  return ArticleListRoute(
-                      sectionArticles,
-                      title: title
-                  );
-                })
+      MaterialPageRoute(
+        builder: (context) =>
+          Consumer<AppModel>(builder: (context, appModel, child) {
+            List<Article> sectionArticles = appModel.articles.where(
+              (article) => (article.number >= from && article.number <= to)
+            ).toList();
+            return ArticleListRoute(
+                sectionArticles,
+                title: title
+            );
+          }
         )
+      )
     );
   }
 
-  Widget buildSectionListTile(BuildContext context, Section section) {
+  Widget _buildSectionListTile(BuildContext context, Section section) {
     return ListTile(
       leading: CircleAvatar(
         child: Text(
           section.name,
-          style: TextStyle(
-              fontWeight: FontWeight.w500
-          )
+          style: _leadingStyle
         ),
         backgroundColor: Colors.grey[900],
       ),
       title: Text(
         section.title,
-        style: TextStyle(
-          height: 1.25,
-          color: Color.fromRGBO(255, 255, 255, 0.87),
-          fontWeight: FontWeight.w500
-        )
+        style: _titleStyle
       ),
       subtitle: Text('Статьи ${section.from}-${section.to}'),
-      onTap: () => handleTap(context, section.title, section.from, section.to),
+      onTap: () => _handleTap(context, section.title, section.from, section.to),
     );
   }
 
-  Widget buildChapterListTile(BuildContext context, Chapter chapter) {
+  Widget _buildChapterListTile(BuildContext context, Chapter chapter) {
     return ListTile(
       leading: CircleAvatar(
         backgroundColor: Colors.grey[800],
         child: Text(
-            chapter.number.toString(),
-            style: TextStyle(
-              fontWeight: FontWeight.w500
-            )
+          chapter.number.toString(),
+          style: _leadingStyle
         ),
       ),
       title: Text(
         chapter.title,
-        style: TextStyle(
-          color: Color.fromRGBO(255, 255, 255, 0.87),
-          height: 1.25,
-          fontWeight: FontWeight.w500
-        ),
+        style: _titleStyle,
       ),
       subtitle: Text('Статьи ${chapter.from}-${chapter.to}'),
-      onTap: () => handleTap(context, chapter.title, chapter.from, chapter.to),
+      onTap: () => _handleTap(context, chapter.title, chapter.from, chapter.to),
     );
   }
 
-  Widget buildListTileWithChapters(BuildContext context, Section section) {
+  Widget _buildListTileWithChapters(BuildContext context, Section section) {
     return ExpansionTile(
       leading: CircleAvatar(
         backgroundColor: Colors.grey[900],
@@ -84,31 +81,29 @@ class ContentView extends StatelessWidget {
       ),
       title: Text(
         section.title,
-        style: TextStyle(
-            height: 1.25,
-            color: Color.fromRGBO(255, 255, 255, 0.87),
-            fontWeight: FontWeight.w500
-        )
+        style: _titleStyle
       ),
       children: section.chapters.map(
-          (chapter) => buildChapterListTile(context, chapter)
+          (chapter) => _buildChapterListTile(context, chapter)
       ).toList(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    List<Widget> _children = [
+      Padding(padding: const EdgeInsets.all(8.0)),
+    ];
+
+    content.forEach((section) {
+      Widget _widget = (section.chapters != null) ?
+        _buildListTileWithChapters(context, section) :
+        _buildSectionListTile(context, section);
+      _children.add(_widget);
+    });
+
     return ListView(
-      children: <Widget>[
-        Padding(padding: const EdgeInsets.all(8.0)),
-        ...content.map(
-                (section) =>
-            (section.chapters != null) ?
-            buildListTileWithChapters(context, section) :
-            buildSectionListTile(context, section)
-        ).toList()
-      ],
+      children: _children,
     );
   }
 }

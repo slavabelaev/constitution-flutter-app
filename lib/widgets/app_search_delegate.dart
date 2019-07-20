@@ -9,6 +9,11 @@ class AppSearchDelegate extends SearchDelegate<int> {
   final List<Article> articles;
   final List<Article> _history = [];
   List<Article> suggestions;
+  String _emptyMessage;
+
+  initState() {
+    _emptyMessage = query.isEmpty ? 'Начинайте вводить' : 'Ничего не найдено';
+  }
 
   ThemeData appBarTheme(BuildContext context) {
     assert(context != null);
@@ -83,23 +88,24 @@ class AppSearchDelegate extends SearchDelegate<int> {
 
     return ArticleListView(
         suggestions,
-        emptyMessage: query.isEmpty ? 'Начинайте вводить' : 'Ничего не найдено'
+        emptyMessage: _emptyMessage,
+        onItemTap: () => FocusScope.of(context).unfocus(),
     );
   }
 
   @override
   Widget buildResults(BuildContext context) {
     if (suggestions.length < 1) {
-      return buildNoSuggestions(context, query);
+      return _buildNoSuggestions(context, query);
     }
 
     return ArticleListView(suggestions);
   }
 
-  Widget buildNoSuggestions(BuildContext context, String query) {
+  Widget _buildNoSuggestions(BuildContext context, String query) {
     return Center(
       child: Text(
-        'Ничего не найдено',
+        _emptyMessage,
         textAlign: TextAlign.center,
       ),
     );
@@ -108,7 +114,7 @@ class AppSearchDelegate extends SearchDelegate<int> {
   @override
   List<Widget> buildActions(BuildContext context) {
     return <Widget>[
-      if (!query.isEmpty) IconButton(
+      (query.isEmpty) ? Container() : IconButton(
         tooltip: 'Clear',
         icon: const Icon(Icons.clear),
         onPressed: () {
@@ -117,37 +123,5 @@ class AppSearchDelegate extends SearchDelegate<int> {
         },
       ),
     ];
-  }
-}
-
-class _ResultCard extends StatelessWidget {
-  const _ResultCard({this.integer, this.title, this.searchDelegate});
-
-  final int integer;
-  final String title;
-  final SearchDelegate<int> searchDelegate;
-
-  @override
-  Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    return GestureDetector(
-      onTap: () {
-        searchDelegate.close(context, integer);
-      },
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: <Widget>[
-              Text(title),
-              Text(
-                '$integer',
-                style: theme.textTheme.headline.copyWith(fontSize: 72.0),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
   }
 }

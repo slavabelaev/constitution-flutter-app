@@ -15,7 +15,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _currentIndex;
 
-  Widget buildArticlesTabPage() {
+  Widget _buildArticlesTabPage() {
     return Consumer<AppModel>(
         builder: (context, app, child) => ArticleListView(
           app.articles,
@@ -24,7 +24,7 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget buildFavoritesTabPage() {
+  Widget _buildFavoritesTabPage() {
     return Consumer<AppModel>(
         builder: (context, app, child) => ArticleListView(
           app.favoriteArticles,
@@ -33,19 +33,32 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget buildBodyWidget() {
+  Widget _buildBody() {
     switch(_currentIndex) {
-      case 1: return buildArticlesTabPage();
-      case 2: return buildFavoritesTabPage();
+      case 1: return _buildArticlesTabPage();
+      case 2: return _buildFavoritesTabPage();
       case 3: return Settings();
       default: return ContentView(content);
     }
   }
 
-  void handleIndexChange(int currentIndex) {
+  void _handleIndexChange(int currentIndex) {
     setState(() {
       _currentIndex = currentIndex;
     });
+  }
+
+  _buildSearchAction() {
+    return Consumer<AppModel>(
+      builder: (context, app, child) =>
+        IconButton(
+          icon: Icon(Icons.search),
+          onPressed: () => showSearch(
+            context: context,
+            delegate: AppSearchDelegate(app.articles)
+          )
+        ),
+    );
   }
 
   @override
@@ -55,22 +68,13 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('Конституция ПМР'),
         actions: <Widget>[
-          Consumer<AppModel>(
-            builder: (context, app, child) =>
-              IconButton(
-                icon: Icon(Icons.search),
-                onPressed: () => showSearch(
-                  context: context,
-                  delegate: AppSearchDelegate(app.articles)
-                )
-              ),
-          )
+          _buildSearchAction()
           //_LanguagePopupMenuButton()
         ],
       ),
-      body: buildBodyWidget(),
+      body: _buildBody(),
       bottomNavigationBar: AppBottomNavigationBar(
-        onIndexChange: handleIndexChange
+        onIndexChange: _handleIndexChange
       ),
     );
   }
