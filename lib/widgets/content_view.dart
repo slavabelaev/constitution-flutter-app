@@ -91,7 +91,7 @@ class ContentView extends StatelessWidget {
         )
       ),
       children: section.chapters.map(
-              (chapter) => buildChapterListTile(context, chapter)
+          (chapter) => buildChapterListTile(context, chapter)
       ).toList(),
     );
   }

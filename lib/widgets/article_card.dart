@@ -30,7 +30,7 @@ class _ArticleCardState extends State<ArticleCard> {
         child: Text.rich(TextSpan(
           children: [
             TextSpan(
-              text: '${item.name})  ',
+              text: '${item.name}) ',
               style: TextStyle(fontWeight: FontWeight.bold)
             ),
             TextSpan(text: '${item.text}')
@@ -91,7 +91,7 @@ class _ArticleCardState extends State<ArticleCard> {
     String lineBreak = '\r\n\r\n';
     String articleText = 'СТАТЬЯ ${article.number}' + lineBreak;
 
-    if (article.text != null) articleText += article.text + lineBreak;
+    if (article.text != null) articleText += '${article.text}' + lineBreak;
 
     if (article.paragraphs != null) {
       article.paragraphs.forEach((paragraph) {
@@ -103,7 +103,7 @@ class _ArticleCardState extends State<ArticleCard> {
           });
         }
 
-        articleText += paragraph.conclusion + lineBreak;
+        if (paragraph.conclusion != null) articleText += paragraph.conclusion + lineBreak;
 
       });
     }

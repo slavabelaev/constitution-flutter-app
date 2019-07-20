@@ -15,34 +15,31 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _currentIndex;
 
+  Widget buildArticlesTabPage() {
+    return Consumer<AppModel>(
+        builder: (context, app, child) => ArticleListView(
+          app.articles,
+          emptyMessage: 'Нет статей',
+        )
+    );
+  }
+
+  Widget buildFavoritesTabPage() {
+    return Consumer<AppModel>(
+        builder: (context, app, child) => ArticleListView(
+          app.favoriteArticles,
+          emptyMessage: 'Нет закладок'
+        )
+    );
+  }
+
   Widget buildBodyWidget() {
-    Widget bodyWidget;
-
     switch(_currentIndex) {
-      case 1:
-        bodyWidget = Consumer<AppModel>(
-            builder: (context, app, child) => ArticleListView(
-              app.articles,
-              emptyMessage: 'Нет статей',
-            )
-        );
-        break;
-      case 2:
-        bodyWidget = Consumer<AppModel>(
-          builder: (context, app, child) => ArticleListView(
-            app.favoriteArticles,
-            emptyMessage: 'Нет закладок',
-          )
-        );
-        break;
-      case 3:
-        bodyWidget = Settings();
-        break;
-      default:
-        bodyWidget = ContentView(content);
+      case 1: return buildArticlesTabPage();
+      case 2: return buildFavoritesTabPage();
+      case 3: return Settings();
+      default: return ContentView(content);
     }
-
-    return bodyWidget;
   }
 
   void handleIndexChange(int currentIndex) {
