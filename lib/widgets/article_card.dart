@@ -36,7 +36,7 @@ class _ArticleCardState extends State<ArticleCard> {
       child: Text.rich(TextSpan(
           children: [
             TextSpan(
-                text: '${subParagraph.name}) ',
+                text: '${subParagraph.title}) ',
                 style: _subParagraphTitleStyle
             ),
             TextSpan(text: '${subParagraph.text}')
@@ -73,7 +73,7 @@ class _ArticleCardState extends State<ArticleCard> {
                 children: <Widget>[
                   Container(
                     child: Text(
-                      'Пункт ${paragraph.name}',
+                      'Пункт ${paragraph.number}',
                       style: _paragraphTitleStyle,
                     ),
                     margin: const EdgeInsets.only(bottom: 16.0),
@@ -112,11 +112,11 @@ class _ArticleCardState extends State<ArticleCard> {
 
     if (article.paragraphs != null) {
       article.paragraphs.forEach((paragraph) {
-        if (paragraph.name != null) articleText += 'Пункт ${paragraph.name}'.toUpperCase() + lineBreak;
+        if (paragraph.number != null) articleText += 'Пункт ${paragraph.number}'.toUpperCase() + lineBreak;
         if (paragraph.introduction != null) articleText += paragraph.introduction + lineBreak;
         if (paragraph.subParagraphs != null) {
           paragraph.subParagraphs.forEach((subParagraph) {
-            articleText += '${subParagraph.name}) ${subParagraph.text}' + lineBreak;
+            articleText += '${subParagraph.title}) ${subParagraph.text}' + lineBreak;
           });
         }
 

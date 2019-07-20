@@ -1,6 +1,6 @@
 class SubParagraph {
-  final String name;
+  final String title;
   final String text;
 
-  SubParagraph({this.name, this.text});
+  SubParagraph({this.title, this.text});
 }

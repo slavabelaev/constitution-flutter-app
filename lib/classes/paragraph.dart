@@ -1,13 +1,13 @@
 import 'sub_paragraph.dart';
 
 class Paragraph {
-  final num name;
+  final num number;
   final String introduction;
   final String conclusion;
   final List<SubParagraph> subParagraphs;
 
   Paragraph(
-      {this.name,
+      {this.number,
         this.introduction,
         this.conclusion,
         this.subParagraphs});

@@ -9,11 +9,6 @@ class AppSearchDelegate extends SearchDelegate<int> {
   final List<Article> articles;
   final List<Article> _history = [];
   List<Article> suggestions;
-  String _emptyMessage;
-
-  initState() {
-    _emptyMessage = query.isEmpty ? 'Начинайте вводить' : 'Ничего не найдено';
-  }
 
   ThemeData appBarTheme(BuildContext context) {
     assert(context != null);
@@ -25,6 +20,10 @@ class AppSearchDelegate extends SearchDelegate<int> {
       //primaryColorBrightness: Brightness.dark,
       primaryTextTheme: theme.textTheme,
     );
+  }
+
+  String _emptyMessageText() {
+    return query.isEmpty ? 'Начинайте вводить' : 'Ничего не найдено';
   }
 
   @override
@@ -88,24 +87,29 @@ class AppSearchDelegate extends SearchDelegate<int> {
 
     return ArticleListView(
         suggestions,
-        emptyMessage: _emptyMessage,
+        emptyMessage: _emptyMessageText(),
         onItemTap: () => FocusScope.of(context).unfocus(),
     );
   }
 
   @override
   Widget buildResults(BuildContext context) {
-    if (suggestions.length < 1) {
+    List<Article> _results = suggestions;
+    if (_results.isEmpty) {
       return _buildNoSuggestions(context, query);
     }
 
-    return ArticleListView(suggestions);
+    return ArticleListView(
+      suggestions,
+      emptyMessage: _emptyMessageText(),
+    );
   }
 
   Widget _buildNoSuggestions(BuildContext context, String query) {
     return Center(
       child: Text(
-        _emptyMessage,
+        _emptyMessageText(),
+        style: Theme.of(context).textTheme.title,
         textAlign: TextAlign.center,
       ),
     );
