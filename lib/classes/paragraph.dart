@@ -2,8 +2,8 @@ import 'sub_paragraph.dart';
 
 class Paragraph {
   final num number;
-  final String introduction;
-  final String conclusion;
+  final List<String> introduction;
+  final List<String> conclusion;
   final List<SubParagraph> subParagraphs;
 
   Paragraph(

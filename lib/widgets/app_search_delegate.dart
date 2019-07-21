@@ -22,7 +22,7 @@ class AppSearchDelegate extends SearchDelegate<int> {
     );
   }
 
-  String _emptyMessageText() {
+  String _getEmptyMessage() {
     return query.isEmpty ? 'Начинайте вводить' : 'Ничего не найдено';
   }
 
@@ -40,7 +40,8 @@ class AppSearchDelegate extends SearchDelegate<int> {
     );
   }
 
-  bool _hasSuggestionsByText(String text) {
+  bool _hasSuggestionsByText(List<String> textElements) {
+    String text = textElements.join();
     return text != null && RegExp(query.toLowerCase())
       .hasMatch(text.toLowerCase());
   }
@@ -66,13 +67,13 @@ class AppSearchDelegate extends SearchDelegate<int> {
 
     if (!hasSubParagraphs) return false;
 
-    return paragraph.subParagraphs.where((paragraph) =>
-      _hasSuggestionsByText(paragraph.text)
+    return paragraph.subParagraphs.where((subParagraph) =>
+      _hasSuggestionsByText([subParagraph.text])
     ).length > 0;
   }
 
   bool _hasSuggestions(Article article) {
-    bool hasSuggestionsByText = _hasSuggestionsByText(article.text);
+    bool hasSuggestionsByText = _hasSuggestionsByText(article.parts);
     bool hasSuggestionsByParagraphs = _hasSuggestionsByParagraphs(article);
     bool hasSuggestionsByNumber = _hasSuggestionsByNumber(article.number);
 
@@ -87,7 +88,7 @@ class AppSearchDelegate extends SearchDelegate<int> {
 
     return ArticleListView(
         suggestions,
-        emptyMessage: _emptyMessageText(),
+        emptyMessage: _getEmptyMessage(),
         onItemTap: () => FocusScope.of(context).unfocus(),
     );
   }
@@ -101,14 +102,14 @@ class AppSearchDelegate extends SearchDelegate<int> {
 
     return ArticleListView(
       suggestions,
-      emptyMessage: _emptyMessageText(),
+      emptyMessage: _getEmptyMessage(),
     );
   }
 
   Widget _buildNoSuggestions(BuildContext context, String query) {
     return Center(
       child: Text(
-        _emptyMessageText(),
+        _getEmptyMessage(),
         style: Theme.of(context).textTheme.title,
         textAlign: TextAlign.center,
       ),

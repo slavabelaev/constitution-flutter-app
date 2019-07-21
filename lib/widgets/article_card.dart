@@ -60,6 +60,29 @@ class _ArticleCardState extends State<ArticleCard> {
     bool _hasSubParagraphs = (paragraph.subParagraphs != null);
     bool _hasConclusion = (paragraph.conclusion != null);
 
+    Widget _buildHeader() {
+      return Container(
+        child: Text(
+          'Пункт ${paragraph.number}',
+          style: _paragraphTitleStyle,
+        ),
+        margin: const EdgeInsets.only(bottom: 16.0),
+      );
+    };
+
+    Widget _buildIntroductionIfExists() {
+      return _hasIntroduction ? Container(
+        child: _buildSplitText(paragraph.introduction),
+        margin: EdgeInsets.only(bottom: _hasSubParagraphs ? 16.0 : 0),
+      ) : Container();
+    }
+
+    Widget _buildSubParagraphsIfExists() =>
+      _hasSubParagraphs ? _buildSubParagraphs(paragraph.subParagraphs) : Container();
+
+    Widget _buildConclusionIfExists() =>
+        _hasConclusion ? _buildSplitText(paragraph.conclusion) : Container();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -71,18 +94,12 @@ class _ArticleCardState extends State<ArticleCard> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Container(
-                    child: Text(
-                      'Пункт ${paragraph.number}',
-                      style: _paragraphTitleStyle,
-                    ),
-                    margin: const EdgeInsets.only(bottom: 16.0),
-                  ),
-                  _hasIntroduction ? _buildSplitText(paragraph.introduction) : Container(),
+                  _buildHeader(),
+                  _buildIntroductionIfExists(),
                 ],
               ),
-              _hasSubParagraphs ? _buildSubParagraphs(paragraph.subParagraphs) : Container(),
-              _hasConclusion ? _buildSplitText(paragraph.conclusion) : Container()
+              _buildSubParagraphsIfExists(),
+              _buildConclusionIfExists()
             ],
           ),
           padding: const EdgeInsets.all(16.0),
@@ -108,19 +125,19 @@ class _ArticleCardState extends State<ArticleCard> {
     String lineBreak = '\r\n\r\n';
     String articleText = 'СТАТЬЯ ${article.number}' + lineBreak;
 
-    if (article.text != null) articleText += '${article.text}' + lineBreak;
+    if (article.parts != null) articleText += article.parts.join(lineBreak) + lineBreak;
 
     if (article.paragraphs != null) {
       article.paragraphs.forEach((paragraph) {
         if (paragraph.number != null) articleText += 'Пункт ${paragraph.number}'.toUpperCase() + lineBreak;
-        if (paragraph.introduction != null) articleText += paragraph.introduction + lineBreak;
+        if (paragraph.introduction != null) articleText += paragraph.introduction.join(lineBreak) + lineBreak;
         if (paragraph.subParagraphs != null) {
           paragraph.subParagraphs.forEach((subParagraph) {
             articleText += '${subParagraph.title}) ${subParagraph.text}' + lineBreak;
           });
         }
 
-        if (paragraph.conclusion != null) articleText += paragraph.conclusion + lineBreak;
+        if (paragraph.conclusion != null) articleText += paragraph.conclusion.join(lineBreak) + lineBreak;
 
       });
     }
@@ -136,9 +153,7 @@ class _ArticleCardState extends State<ArticleCard> {
     );
   }
 
-  Widget _buildSplitText(String text) {
-    List<String> textElements = text.split('\r\n\r\n');
-
+  Widget _buildSplitText(List<String> textElements) {
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: textElements.map(
@@ -153,22 +168,32 @@ class _ArticleCardState extends State<ArticleCard> {
   Widget _buildCardHeader() {
     Article article = widget.article;
 
-    return Row(
-      children: <Widget>[
-        Expanded(
-            child: Container(
-              child: Text(
-                  'Статья ${article.number}',
-                  style: Theme.of(context).textTheme.title
-              ),
-              padding: const EdgeInsets.all(16.0),
-            )
-        ),
-        IconButton(
+    Widget _buildTitle() {
+      return Expanded(
+          child: Container(
+            child: Text(
+                'Статья ${article.number}',
+                style: Theme.of(context).textTheme.title
+            ),
+            padding: const EdgeInsets.all(16.0),
+          )
+      );
+    }
+
+    Widget _buildShareButton() {
+      return Tooltip(
+        message: 'Поделиться',
+        child: IconButton(
             icon: Icon(Icons.share),
             onPressed: () => _shareArticle(article)
         ),
-        Consumer<AppModel>(
+      );
+    }
+
+    Widget _buildAddToBookmarksButton() {
+      return Tooltip(
+        message: 'Добавить в закладки',
+        child: Consumer<AppModel>(
           builder: (context, appModel, child) => IconButton(
               icon:
               Icon(appModel.containsInFavorites(article) ? Icons.bookmark : Icons.bookmark_border),
@@ -177,7 +202,15 @@ class _ArticleCardState extends State<ArticleCard> {
                 _toggleCheck(article);
               }
           ),
-        )
+        ),
+      );
+    }
+
+    return Row(
+      children: <Widget>[
+        _buildTitle(),
+        _buildShareButton(),
+        _buildAddToBookmarksButton()
       ],
     );
   }
@@ -185,10 +218,10 @@ class _ArticleCardState extends State<ArticleCard> {
   Widget _buildArticleText() {
     Article _article = widget.article;
 
-    if (_article.text == null) return Container();
+    if (_article.parts == null) return Container();
 
     return Container(
-      child: _buildSplitText(_article.text),
+      child: _buildSplitText(_article.parts),
       padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
     );
   }
@@ -197,6 +230,7 @@ class _ArticleCardState extends State<ArticleCard> {
   Widget build(BuildContext context) {
     return Card(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           _buildCardHeader(),
           _buildArticleText(),
