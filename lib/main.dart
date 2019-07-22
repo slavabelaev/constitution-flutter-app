@@ -25,7 +25,7 @@ void main() => runApp(
 
 class App extends StatelessWidget {
 
-  ThemeData theme = ThemeData.dark().copyWith(
+  final ThemeData theme = ThemeData.dark().copyWith(
     // Define the default brightness and colors.
     brightness: Brightness.dark,
     primaryColor: Colors.grey[900],

@@ -82,7 +82,9 @@ class ContentView extends StatelessWidget {
         style: _titleStyle
       ),
       subtitle: _buildSubtitle(),
-      onTap: () => isPreamble ? _showPreamble(context, section.title) : _showArticles(context, section.title, section.name, section.startsWith, section.endsWith),
+      onTap: () => isPreamble ?
+        _showPreamble(context, section.title) :
+        _showArticles(context, section.title, section.name, section.startsWith, section.endsWith),
     );
   }
 
