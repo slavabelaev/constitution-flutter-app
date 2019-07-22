@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'paragraph.dart';
 
 class Article {
@@ -7,6 +8,11 @@ class Article {
   final List<String> parts;
   final List<Paragraph> paragraphs;
 
-  Article(
-      {this.number, this.section, this.chapter, this.parts, this.paragraphs});
+  Article({
+    @required this.number,
+    @required this.section,
+    this.chapter,
+    this.parts,
+    this.paragraphs
+  });
 }

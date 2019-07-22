@@ -1,8 +1,15 @@
+import 'package:flutter/foundation.dart';
+
 class Chapter {
   final num number;
   final String title;
-  final num from;
-  final num to;
+  final num startsWith;
+  final num endsWith;
 
-  Chapter({this.number, this.title, this.from, this.to});
+  Chapter({
+    @required this.number,
+    @required this.title,
+    @required this.startsWith,
+    @required this.endsWith
+  });
 }

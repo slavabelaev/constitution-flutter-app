@@ -5,6 +5,7 @@ import '../classes/section.dart';
 import '../classes/chapter.dart';
 import '../models/app_model.dart';
 import '../routes/article_list_route.dart';
+import '../routes/preable_route.dart';
 
 class ContentView extends StatelessWidget {
   ContentView(this.content);
@@ -19,13 +20,23 @@ class ContentView extends StatelessWidget {
       fontWeight: FontWeight.w500
   );
 
-  void _handleTap(BuildContext context, String title, num from, num to) {
+  void _showArticles(
+      BuildContext context,
+      String title,
+      String sectionName,
+      num startsWith,
+      num endsWith
+  ) {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) =>
-          Consumer<AppModel>(builder: (context, appModel, child) {
-            List<Article> sectionArticles = appModel.articles.where(
-              (article) => (article.number >= from && article.number <= to)
+          Consumer<AppModel>(builder: (context, app, child) {
+            List<Article> sectionArticles = app.articles.where(
+              (article) => (
+                  article.section == sectionName &&
+                  article.number >= startsWith &&
+                  article.number <= endsWith
+              )
             ).toList();
             return ArticleListRoute(
                 sectionArticles,
@@ -37,7 +48,27 @@ class ContentView extends StatelessWidget {
     );
   }
 
+  void _showPreamble(BuildContext context, String title) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) =>
+          Consumer<AppModel>(
+            builder: (context, app, child) => PreambleRoute(
+              app.preamble,
+              title: title,
+            )
+          )
+      )
+    );
+  }
+
   Widget _buildSectionListTile(BuildContext context, Section section) {
+    bool isPreamble = (section.startsWith == 0);
+
+    Widget _buildSubtitle() {
+      return isPreamble ? null : Text('Статьи ${section.startsWith}-${section.endsWith}');
+    }
+
     return ListTile(
       leading: CircleAvatar(
         child: Text(
@@ -50,12 +81,12 @@ class ContentView extends StatelessWidget {
         section.title,
         style: _titleStyle
       ),
-      subtitle: Text('Статьи ${section.from}-${section.to}'),
-      onTap: () => _handleTap(context, section.title, section.from, section.to),
+      subtitle: _buildSubtitle(),
+      onTap: () => isPreamble ? _showPreamble(context, section.title) : _showArticles(context, section.title, section.name, section.startsWith, section.endsWith),
     );
   }
 
-  Widget _buildChapterListTile(BuildContext context, Chapter chapter) {
+  Widget _buildChapterListTile(BuildContext context, Section section, Chapter chapter) {
     return ListTile(
       leading: CircleAvatar(
         backgroundColor: Colors.grey[800],
@@ -68,8 +99,8 @@ class ContentView extends StatelessWidget {
         chapter.title,
         style: _titleStyle,
       ),
-      subtitle: Text('Статьи ${chapter.from}-${chapter.to}'),
-      onTap: () => _handleTap(context, chapter.title, chapter.from, chapter.to),
+      subtitle: Text('Статьи ${chapter.startsWith}-${chapter.endsWith}'),
+      onTap: () => _showArticles(context, chapter.title, section.name, chapter.startsWith, chapter.endsWith),
     );
   }
 
@@ -84,7 +115,7 @@ class ContentView extends StatelessWidget {
         style: _titleStyle
       ),
       children: section.chapters.map(
-          (chapter) => _buildChapterListTile(context, chapter)
+          (chapter) => _buildChapterListTile(context, section, chapter)
       ).toList(),
     );
   }

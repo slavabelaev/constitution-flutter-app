@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../widgets/app_bottom_navigation_bar.dart';
-import '../content/content_ru.dart';
 import '../widgets/app_search_delegate.dart';
 import '../widgets/content_view.dart';
 import '../widgets/article_list_view.dart';
@@ -33,12 +32,18 @@ class _HomeState extends State<Home> {
     );
   }
 
+  Widget _buildContentTabPage() {
+    return Consumer<AppModel>(
+        builder: (context, app, child) => ContentView(app.content)
+    );
+  }
+
   Widget _buildBody() {
     switch(_currentIndex) {
       case 1: return _buildArticlesTabPage();
       case 2: return _buildFavoritesTabPage();
       case 3: return Settings();
-      default: return ContentView(content);
+      default: return _buildContentTabPage();
     }
   }
 
@@ -63,7 +68,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text('Конституция ПМР'),
@@ -83,7 +87,6 @@ class _HomeState extends State<Home> {
 class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return ListView(
       children: <Widget>[
         ListTile(

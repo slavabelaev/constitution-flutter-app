@@ -26,10 +26,7 @@ class ArticleListView extends StatelessWidget {
           onTap: onItemTap,
         ),
         padding: EdgeInsets.only(
-            top: 8.0,
-            left: 8.0,
-            right: 8.0,
-            bottom: (articles[index] == articles.last) ? 8.0 : 0
+          bottom: (articles[index] == articles.last) ? 0 : 8.0
         )
     );
   }
@@ -41,6 +38,7 @@ class ArticleListView extends StatelessWidget {
     }
       
     return ListView.builder(
+        padding: const EdgeInsets.all(8.0),
         controller: (controller != null) ? controller : ScrollController(),
         itemCount: articles.length,
         itemBuilder: _buildItem

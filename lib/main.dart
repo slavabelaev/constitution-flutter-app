@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'content/preamble_ru.dart';
 import 'content/articles_ru.dart';
+import 'content/content_ru.dart';
+import 'content/amendments_ru.dart';
 import 'models/app_model.dart';
 import 'widgets/home.dart';
 
 void main() => runApp(
     MultiProvider(
       providers: [
-        Provider(builder: (context) => AppModel(articles))
+        Provider(builder:
+          (context) => AppModel(
+            preamble: preamble,
+            articles: articles,
+            content: content,
+            amendments: amendments,
+          )
+        )
       ],
       child: App(),
     )
