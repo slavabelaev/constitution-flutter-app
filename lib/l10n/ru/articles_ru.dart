@@ -2,7 +2,7 @@ import '../../classes/article.dart';
 import '../../classes/paragraph.dart';
 import '../../classes/sub_paragraph.dart';
 
-List<Article> articles = [
+List<Article> articles_ru = [
   Article(section: "I", number: 1, parts: [
     "Приднестровская Молдавская Республика — суверенное, независимое, демократическое, правовое государство.",
     "Носителем суверенитета и единственным источником власти в Приднестровской Молдавской Республике является народ.",

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../classes/article.dart';
 import '../classes/section.dart';
 import '../classes/chapter.dart';
-import '../models/app_model.dart';
 import '../routes/article_list_route.dart';
 import '../routes/preamble_route.dart';
+import '../l10n/app_localizations.dart';
 
 class ContentView extends StatelessWidget {
   ContentView(this.content);
@@ -29,21 +28,19 @@ class ContentView extends StatelessWidget {
   ) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) =>
-          Consumer<AppModel>(builder: (context, app, child) {
-            List<Article> sectionArticles = app.articles.where(
-              (article) => (
+        builder: (context) {
+          List<Article> sectionArticles = AppLocalizations.of(context).articles.where(
+                  (article) => (
                   article.section == sectionName &&
-                  article.number >= startsWith &&
-                  article.number <= endsWith
+                      article.number >= startsWith &&
+                      article.number <= endsWith
               )
-            ).toList();
-            return ArticleListRoute(
-                sectionArticles,
-                title: title
-            );
-          }
-        )
+          ).toList();
+          return ArticleListRoute(
+              sectionArticles,
+              title: title
+          );
+        }
       )
     );
   }
@@ -52,11 +49,9 @@ class ContentView extends StatelessWidget {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) =>
-          Consumer<AppModel>(
-            builder: (context, app, child) => PreambleRoute(
-              app.preamble,
-              title: title,
-            )
+          PreambleRoute(
+            AppLocalizations.of(context).preamble,
+            title: title,
           )
       )
     );

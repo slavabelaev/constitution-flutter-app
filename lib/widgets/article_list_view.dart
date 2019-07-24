@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../classes/article.dart';
 import '../widgets/article_card.dart';
+import '../l10n/app_localizations.dart';
 
 class ArticleListView extends StatelessWidget {
   ArticleListView(this.articles, {this.emptyMessage, this.controller, this.onItemTap});
@@ -10,10 +11,12 @@ class ArticleListView extends StatelessWidget {
   final ScrollController controller;
   final VoidCallback onItemTap;
 
+  ArticleListViewLocalizations localizations;
+
   Widget _buildEmptyMessage(BuildContext context) {
     return Center(
       child: Text(
-          (emptyMessage != null) ? emptyMessage : 'Ничего нет',
+          (emptyMessage != null) ? emptyMessage : localizations.emptyMessage,
           style: Theme.of(context).textTheme.title
       ),
     );
@@ -33,6 +36,8 @@ class ArticleListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    localizations = AppLocalizations.of(context).articleListView;
+
     if (articles == null || articles.length == 0) {
       return _buildEmptyMessage(context);
     }

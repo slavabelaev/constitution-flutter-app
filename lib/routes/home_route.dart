@@ -5,44 +5,49 @@ import '../widgets/app_search_delegate.dart';
 import '../widgets/content_view.dart';
 import '../widgets/article_list_view.dart';
 import '../widgets/amendment_list_view.dart';
-import '../models/app_model.dart';
+import '../models/favorites_model.dart';
+import '../routes/settings_route.dart';
+import '../l10n/app_localizations.dart';
+import '../models/locale_model.dart';
 
 class HomeRoute extends StatefulWidget {
   @override
   _HomeRouteState createState() => _HomeRouteState();
 }
 
+enum popupMenuOptions {
+  settings,
+  chooseLanguage
+}
+
 class _HomeRouteState extends State<HomeRoute> {
   int _currentIndex;
 
+  AppLocalizations get contentLocalizations => AppLocalizations.of(context);
+  HomeRouteLocalizations get localizations => AppLocalizations.of(context).homeRoute;
+
   Widget _buildContentTabPage() {
-    return Consumer<AppModel>(
-        builder: (context, app, child) => ContentView(app.content)
-    );
+    return ContentView(contentLocalizations.content);
   }
 
   Widget _buildArticlesTabPage() {
-    return Consumer<AppModel>(
-        builder: (context, app, child) => ArticleListView(
-          app.articles,
-          emptyMessage: 'Нет статей',
-        )
+    return ArticleListView(
+      contentLocalizations.articles,
+      emptyMessage: localizations.noArticles,
     );
   }
 
   Widget _buildFavoritesTabPage() {
-    return Consumer<AppModel>(
-        builder: (context, app, child) => ArticleListView(
-          app.favoriteArticles,
-          emptyMessage: 'Нет закладок'
+    return Consumer<FavoritesModel>(
+        builder: (context, favorites, child) => ArticleListView(
+          favorites.articles,
+          emptyMessage: localizations.noBookmarks
         )
     );
   }
 
   Widget _buildAmendmentsTabPage() {
-    return Consumer<AppModel>(
-        builder: (context, app, child) => AmendmentsListView(app.amendments)
-    );
+    return AmendmentsListView(contentLocalizations.amendments);
   }
 
   Widget _buildBody() {
@@ -60,30 +65,81 @@ class _HomeRouteState extends State<HomeRoute> {
     });
   }
 
-  _buildSearchAction() {
-    return Consumer<AppModel>(
-      builder: (context, app, child) =>
-        IconButton(
-          icon: Icon(Icons.search),
-          onPressed: () => showSearch(
+  Widget _buildSearchAction() {
+    return IconButton(
+        icon: Icon(Icons.search),
+        onPressed: () => showSearch(
             context: context,
-            delegate: AppSearchDelegate(app.articles)
-          )
-        ),
+            delegate: AppSearchDelegate(contentLocalizations.articles)
+        )
     );
+  }
+
+  Widget _buildPopupMenu() {
+    return PopupMenuButton(
+        icon: Icon(Icons.more_vert),
+        onSelected: (selected) {
+          switch(selected) {
+            case popupMenuOptions.chooseLanguage:
+              _showLanguageDialog();
+              break;
+            case popupMenuOptions.settings:
+              _showSettings();
+              break;
+          }
+        },
+        itemBuilder: (context) => [
+          PopupMenuItem(
+            value: popupMenuOptions.chooseLanguage,
+            child: Text(localizations.chooseLanguage),
+          ),
+          PopupMenuItem(
+            value: popupMenuOptions.settings,
+            child: Text(localizations.settings),
+          )
+        ]
+    );
+  }
+
+  void _showLanguageDialog() {
+    showDialog(
+        context: context,
+        builder: (context) =>
+          Consumer<LocaleModel>(builder: (context, locale, child) =>
+            SimpleDialog(
+              children: <Widget>[
+                SimpleDialogOption(
+                    child: Text('Русский'),
+                    onPressed: () => locale.change(Locale('ru'))
+                ),
+                SimpleDialogOption(
+                    child: Text('Молдавеняскэ'),
+                    onPressed: () => locale.change(Locale('md'))
+                ),
+                SimpleDialogOption(
+                    child: Text('Український'),
+                    onPressed: () => locale.change(Locale('ua'))
+                )
+              ],
+            )
+        )
+    );
+  }
+
+  void _showSettings() {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => SettingsRoute()
+    ));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Конституция ПМР'),
+        title: Text(contentLocalizations.title),
         actions: <Widget>[
           _buildSearchAction(),
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            onPressed: () => null
-          )
+          _buildPopupMenu()
           //_LanguagePopupMenuButton()
         ],
       ),

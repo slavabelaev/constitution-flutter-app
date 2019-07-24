@@ -1,30 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:constitution/content/ru/preamble.dart';
-import 'package:constitution/content/ru/articles.dart';
-import 'package:constitution/content/ru/content.dart';
-import 'package:constitution/content/ru/amendments.dart';
-import 'models/app_model.dart';
+import 'models/favorites_model.dart';
+import 'models/locale_model.dart';
+import 'l10n/app_localizations.dart';
 import 'package:constitution/routes/home_route.dart';
 
-void main() => runApp(
+void main() {
+  runApp(
     MultiProvider(
-      providers: [
-        Provider(builder:
-          (context) => AppModel(
-            preamble: preamble,
-            articles: articles,
-            content: content,
-            amendments: amendments,
-          )
-        )
-      ],
-      child: App(),
+        providers: [
+          ChangeNotifierProvider(builder: (context) => FavoritesModel()),
+          ChangeNotifierProvider(builder: (context) => LocaleModel()),
+        ],
+        child: App()
     )
-);
+  );
+}
 
 class App extends StatelessWidget {
-
   final ThemeData theme = ThemeData.dark().copyWith(
     // Define the default brightness and colors.
     brightness: Brightness.dark,
@@ -40,7 +34,7 @@ class App extends StatelessWidget {
 
     cardColor: Colors.grey[900],
 
-    scaffoldBackgroundColor: Color.fromRGBO(18, 18, 18, 1),
+    scaffoldBackgroundColor: Color.fromRGBO(0, 0, 0, 0.07),
 
     iconTheme: IconThemeData().copyWith(
       opacity: .87,
@@ -63,17 +57,31 @@ class App extends StatelessWidget {
         fontSize: 16.0,
         height: 1.5,
         //fontFamily: 'Hind',
-        color: Colors.white70
+        color: Color.fromRGBO(255, 255, 255, 0.87)
       ),
     ),
   );
 
+  AppLocalizations getLocalizations(context, Locale locale) {
+    return (locale != null) ? AppLocalizations(locale) : AppLocalizations.of(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
       theme: theme,
-      home: HomeRoute()
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        AppLocalizations.delegate
+      ],
+      supportedLocales: [
+        const Locale('ru'),
+        const Locale('md'),
+        const Locale('ua'),
+      ],
+      home: HomeRoute()//HomeRoute()
     );
   }
 }

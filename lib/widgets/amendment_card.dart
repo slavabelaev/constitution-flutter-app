@@ -1,89 +1,152 @@
 import 'package:flutter/material.dart';
 import '../classes/amendment.dart';
+import '../widgets/custom_divider.dart';
+import '../l10n/app_localizations.dart';
 
 class AmendmentCard extends StatelessWidget {
   AmendmentCard(this.amendment);
 
+  AmendmentCardLocalizations localizations;
+
   final Amendment amendment;
 
-  bool _hasSection() => (amendment.sectionName != null);
-  bool _hasChapter() => (amendment.chapterNumber != null);
-  bool _hasArticle() => (amendment.articleNumber != null);
-  bool _hasParagraph() => (amendment.paragraphNumber != null);
-  bool _hasSubParagraph() => (amendment.subParagraphName != null);
-  bool _hasPart() => (amendment.partNumber != null);
-  bool _hasSentence() => (amendment.sentenceNumber != null);
+  final TextStyle definitionStyle = TextStyle(fontWeight: FontWeight.bold);
 
-  TextSpan _buildSection() {
-    return  _hasSection() ?
-      TextSpan(text: 'раздел ${amendment.sectionName} ') :
+  bool _isNotNull(subject) => (subject != null);
+
+  TextSpan _buildSection(sectionName) {
+    return  _isNotNull(sectionName) ?
+      TextSpan(text: '${localizations.section} $sectionName ') :
       TextSpan();
   }
 
-  TextSpan _buildChapter() {
-    return _hasChapter() ?
-      TextSpan(text: 'глава ${amendment.chapterNumber} ') :
+  TextSpan _buildChapter(chapterNumber) {
+    return _isNotNull(chapterNumber) ?
+      TextSpan(text: '${localizations.chapter} $chapterNumber ') :
       TextSpan();
   }
 
-  TextSpan _buildArticle() {
-    return _hasArticle() ?
-      TextSpan(text: 'статья ${amendment.articleNumber} ') :
+  TextSpan _buildArticle(articleNumber) {
+    return _isNotNull(articleNumber) ?
+      TextSpan(text: '${localizations.article} $articleNumber ') :
       TextSpan();
   }
 
-  TextSpan _buildParagraph() {
-    return _hasParagraph() ?
-      TextSpan(text: 'пункт ${amendment.paragraphNumber} ') :
+  TextSpan _buildParagraph(paragraphNumber) {
+    return _isNotNull(paragraphNumber) ?
+      TextSpan(text: '${localizations.paragraph} $paragraphNumber ') :
       TextSpan();
   }
 
-  TextSpan _buildSubParagraph() {
-    return _hasSubParagraph() ?
-      TextSpan(text: 'подпункт ${amendment.subParagraphName}) ') :
+  TextSpan _buildSubParagraph(subParagraphName) {
+    return _isNotNull(subParagraphName) ?
+      TextSpan(text: '${localizations.subParagraph} $subParagraphName) ') :
       TextSpan();
   }
 
-  TextSpan _buildPart() {
-    return _hasPart() ?
-      TextSpan(text: 'часть ${amendment.partNumber} ') :
+  TextSpan _buildPart(partNumber) {
+    return _isNotNull(partNumber) ?
+      TextSpan(text: '${localizations.part} $partNumber ') :
       TextSpan();
   }
 
-  TextSpan _buildSentence() {
-    return _hasSentence() ?
-    TextSpan(text: 'предложение ${amendment.sentenceNumber} ') : TextSpan();
+  TextSpan _buildSentence(sentenceNumber) {
+    return _isNotNull(sentenceNumber) ?
+    TextSpan(text: '${localizations.sentence} $sentenceNumber ') : TextSpan();
   }
 
-  _buildTitle() {
-    return Text.rich(
-        TextSpan(
-            children: [
-              _buildSection(),
-              _buildChapter(),
-              _buildArticle(),
-              _buildParagraph(),
-              _buildSubParagraph(),
-              _buildPart(),
-              _buildSentence()
-            ]
-        )
-    );
+  Widget _buildSourceOfAmendment(String title, Amendment amendment) {
+    return (amendment != null) ? Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text.rich(
+            TextSpan(
+                children: [
+                  TextSpan(text: '$title: ', style: definitionStyle),
+                  _buildSection(amendment.sectionName),
+                  _buildChapter(amendment.chapterNumber),
+                  _buildArticle(amendment.articleNumber),
+                  _buildParagraph(amendment.paragraphNumber),
+                  _buildSubParagraph(amendment.subParagraphName),
+                  _buildPart(amendment.partNumber),
+                  _buildSentence(amendment.sentenceNumber)
+                ]
+            )
+        ),
+        //Text('Перемещено в:', style: definitionStyle)
+      ],
+    ) : Container();
   }
 
-  _getOperationName() {
+  String _getOperationName() {
     switch(amendment.operation) {
-      case AmendmentOperation.ADDED: return 'дополнение';
-      case AmendmentOperation.CHANGED: return 'правка';
-      case AmendmentOperation.REMOVED: return 'удаление';
-      case AmendmentOperation.RENAMED: return 'переименование';
-      case AmendmentOperation.REPLACED: return 'перемещение';
+      case AmendmentOperation.ADDED: return localizations.added;
+      case AmendmentOperation.CHANGED: return localizations.changed;
+      case AmendmentOperation.REMOVED: return localizations.removed;
+      case AmendmentOperation.RENAMED: return localizations.renamed;
+      case AmendmentOperation.REPLACED: return localizations.replaced;
       default: return '';
     }
   }
 
+  IconData _getIcon() {
+    switch(amendment.operation) {
+      case AmendmentOperation.ADDED: return Icons.add;
+      case AmendmentOperation.CHANGED: return Icons.edit;
+      case AmendmentOperation.REMOVED: return Icons.remove;
+      case AmendmentOperation.RENAMED: return Icons.title;
+      case AmendmentOperation.REPLACED: return Icons.swap_horiz;
+      default: return null;
+    }
+  }
+
+  Widget _buildPublishingSource() {
+    return (amendment.publishedIn != null) ?
+      Text.rich(
+        TextSpan(
+          children: [
+            TextSpan(text: '${localizations.publishedIn}: ', style: definitionStyle),
+            TextSpan(text: '${amendment.publishedIn}'),
+          ]
+        )
+      )
+        :
+      Container();
+  }
+
+ Widget _buildHeader(BuildContext context) {
+    return ListTile(
+      title: Text('${localizations.law} ${amendment.lawNumber}', style: Theme.of(context).textTheme.title),
+      subtitle: Text('${localizations.from} ${amendment.lawDateFrom}'),
+      trailing: Icon(_getIcon()),
+    );
+  }
+
+  Widget _buildBody(BuildContext context) {
+    return Padding(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  _buildSourceOfAmendment(_getOperationName(), amendment),
+                  _buildSourceOfAmendment(localizations.replacedTo, amendment.replacedFrom)
+                ],
+              ),
+              padding: const EdgeInsets.only(bottom: 8.0)
+            ),
+            _buildPublishingSource()
+          ],
+        ),
+        padding: const EdgeInsets.all(16.0)
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    localizations = AppLocalizations.of(context).amendmentCard;
 //    List<String> dateElements = amendment.lawDateFrom.split('-');
 //    DateTime dateTime = DateTime(
 //      int.parse(dateElements[0]),
@@ -95,40 +158,9 @@ class AmendmentCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          ListTile(
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text('Закон ${amendment.lawNumber}', style: Theme.of(context).textTheme.title),
-                Container(
-                  child: Text(
-                    _getOperationName(),
-                    style: TextStyle(
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white70
-                    )
-                  ),
-                  padding: const EdgeInsets.only(top: 4.0, bottom: 4.0, left: 8.0, right: 8.0),
-                  decoration: BoxDecoration(
-                    color: Colors.black87,
-                    borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                  ),
-                )
-              ],
-            ),
-            subtitle: Text('от ${amendment.lawDateFrom}'),
-          ),
-          Padding(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  _buildTitle(),
-                  Text('Источник: ${amendment.publishedIn}')
-                ],
-              ),
-              padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0)
-          )
+          _buildHeader(context),
+          CustomDivider(),
+          _buildBody(context)
         ],
       ),
       margin: const EdgeInsets.all(0),

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
-import '../models/app_model.dart';
+import '../widgets/custom_divider.dart';
+import '../models/favorites_model.dart';
 import '../classes/article.dart';
 import '../classes/paragraph.dart';
 import '../classes/sub_paragraph.dart';
+import '../l10n/app_localizations.dart';
 
 class ArticleCard extends StatefulWidget {
   ArticleCard(this.article);
@@ -17,6 +19,8 @@ class ArticleCard extends StatefulWidget {
 
 class _ArticleCardState extends State<ArticleCard> {
   bool checked = false;
+
+  ArticleCardLocalizations get localizations => AppLocalizations.of(context).articleCard;
 
   void _toggleCheck(Article article) {
     setState(() => checked = !checked);
@@ -63,7 +67,7 @@ class _ArticleCardState extends State<ArticleCard> {
     Widget _buildHeader() {
       return Container(
         child: Text(
-          'Пункт ${paragraph.number}',
+          '${localizations.paragraph} ${paragraph.number}',
           style: _paragraphTitleStyle,
         ),
         margin: const EdgeInsets.only(bottom: 16.0),
@@ -123,13 +127,13 @@ class _ArticleCardState extends State<ArticleCard> {
 
   String _getArticleAsPlainText(Article article) {
     String lineBreak = '\r\n\r\n';
-    String articleText = 'СТАТЬЯ ${article.number}' + lineBreak;
+    String articleText = '${localizations.article} ${article.number}' + lineBreak;
 
     if (article.parts != null) articleText += article.parts.join(lineBreak) + lineBreak;
 
     if (article.paragraphs != null) {
       article.paragraphs.forEach((paragraph) {
-        if (paragraph.number != null) articleText += 'Пункт ${paragraph.number}'.toUpperCase() + lineBreak;
+        if (paragraph.number != null) articleText += '${localizations.paragraph} ${paragraph.number}'.toUpperCase() + lineBreak;
         if (paragraph.introduction != null) articleText += paragraph.introduction.join(lineBreak) + lineBreak;
         if (paragraph.subParagraphs != null) {
           paragraph.subParagraphs.forEach((subParagraph) {
@@ -172,7 +176,7 @@ class _ArticleCardState extends State<ArticleCard> {
       return Expanded(
           child: Container(
             child: Text(
-                'Статья ${article.number}',
+                '${localizations.article} ${article.number}',
                 style: Theme.of(context).textTheme.title
             ),
             padding: const EdgeInsets.all(16.0),
@@ -182,7 +186,7 @@ class _ArticleCardState extends State<ArticleCard> {
 
     Widget _buildShareButton() {
       return Tooltip(
-        message: 'Поделиться',
+        message: localizations.share,
         child: IconButton(
             icon: Icon(Icons.share),
             onPressed: () => _shareArticle(article)
@@ -192,13 +196,13 @@ class _ArticleCardState extends State<ArticleCard> {
 
     Widget _buildAddToBookmarksButton() {
       return Tooltip(
-        message: 'Добавить в закладки',
-        child: Consumer<AppModel>(
-          builder: (context, appModel, child) => IconButton(
+        message: localizations.addToBookmarks,
+        child: Consumer<FavoritesModel>(
+          builder: (context, favorites, child) => IconButton(
               icon:
-              Icon(appModel.containsInFavorites(article) ? Icons.bookmark : Icons.bookmark_border),
+              Icon(favorites.contains(article) ? Icons.bookmark : Icons.bookmark_border),
               onPressed: () {
-                appModel.toggleFavorite(article);
+                favorites.toggle(article);
                 _toggleCheck(article);
               }
           ),
@@ -241,16 +245,4 @@ class _ArticleCardState extends State<ArticleCard> {
     );
   }
 
-}
-
-class CustomDivider extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 1,
-      decoration: BoxDecoration(
-        color: Theme.of(context).dividerColor,
-      ),
-    );
-  }
 }

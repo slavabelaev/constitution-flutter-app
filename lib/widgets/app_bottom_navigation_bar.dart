@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import '../l10n/app_localizations.dart';
 
 class AppBottomNavigationBar extends StatefulWidget {
   AppBottomNavigationBar({this.onIndexChange});
@@ -13,6 +14,9 @@ class AppBottomNavigationBar extends StatefulWidget {
 class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
 
   int _selectedIndex = 0;
+
+  BottomNavigationBarLocalizations get localizations =>
+      AppLocalizations.of(context).bottomNavigationBar;
 
   void handleTap(int selectedIndex) {
     setState(() { _selectedIndex = selectedIndex; });
@@ -31,22 +35,22 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
           BottomNavigationBarItem(
               icon: Icon(MdiIcons.bookOutline),
               activeIcon: Icon(MdiIcons.book),
-              title: Text('По темам')
+              title: Text(localizations.byTopic)
           ),
           BottomNavigationBarItem(
               icon: Icon(MdiIcons.fileDocumentBoxMultipleOutline),
               activeIcon: Icon(MdiIcons.fileDocumentBoxMultiple),
-              title: Text('Статьи')
+              title: Text(localizations.articles)
           ),
           BottomNavigationBarItem(
               icon: Icon(MdiIcons.bookmarkMultipleOutline),
               activeIcon: Icon(MdiIcons.bookmarkMultiple),
-              title: Text('Закладки')
+              title: Text(localizations.bookmarks)
           ),
           BottomNavigationBarItem(
               icon: Icon(MdiIcons.pencilOutline),
               activeIcon: Icon(MdiIcons.pencil),
-              title: Text('Поправки')
+              title: Text(localizations.amendments)
           ),
         ],
       )
