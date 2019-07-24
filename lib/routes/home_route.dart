@@ -4,15 +4,22 @@ import '../widgets/app_bottom_navigation_bar.dart';
 import '../widgets/app_search_delegate.dart';
 import '../widgets/content_view.dart';
 import '../widgets/article_list_view.dart';
+import '../widgets/amendment_list_view.dart';
 import '../models/app_model.dart';
 
-class Home extends StatefulWidget {
+class HomeRoute extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _HomeRouteState createState() => _HomeRouteState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeRouteState extends State<HomeRoute> {
   int _currentIndex;
+
+  Widget _buildContentTabPage() {
+    return Consumer<AppModel>(
+        builder: (context, app, child) => ContentView(app.content)
+    );
+  }
 
   Widget _buildArticlesTabPage() {
     return Consumer<AppModel>(
@@ -32,9 +39,9 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget _buildContentTabPage() {
+  Widget _buildAmendmentsTabPage() {
     return Consumer<AppModel>(
-        builder: (context, app, child) => ContentView(app.content)
+        builder: (context, app, child) => AmendmentsListView(app.amendments)
     );
   }
 
@@ -42,7 +49,7 @@ class _HomeState extends State<Home> {
     switch(_currentIndex) {
       case 1: return _buildArticlesTabPage();
       case 2: return _buildFavoritesTabPage();
-      case 3: return Settings();
+      case 3: return _buildAmendmentsTabPage();
       default: return _buildContentTabPage();
     }
   }
@@ -72,7 +79,11 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('Конституция ПМР'),
         actions: <Widget>[
-          _buildSearchAction()
+          _buildSearchAction(),
+          IconButton(
+            icon: Icon(Icons.more_vert),
+            onPressed: () => null
+          )
           //_LanguagePopupMenuButton()
         ],
       ),
@@ -80,20 +91,6 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: AppBottomNavigationBar(
         onIndexChange: _handleIndexChange
       ),
-    );
-  }
-}
-
-class Settings extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        ListTile(
-          title: Text('Темная тема'),
-          trailing: Switch(value: true, onChanged: null),
-        )
-      ],
     );
   }
 }

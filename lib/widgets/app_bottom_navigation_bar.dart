@@ -44,9 +44,9 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
               title: Text('Закладки')
           ),
           BottomNavigationBarItem(
-              icon: Icon(MdiIcons.settingsOutline),
-              activeIcon: Icon(MdiIcons.settings),
-              title: Text('Настройки')
+              icon: Icon(MdiIcons.pencilOutline),
+              activeIcon: Icon(MdiIcons.pencil),
+              title: Text('Поправки')
           ),
         ],
       )

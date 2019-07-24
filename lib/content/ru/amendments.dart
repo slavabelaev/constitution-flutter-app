@@ -1,4 +1,4 @@
-import '../classes/amendment.dart';
+import '../../classes/amendment.dart';
 
 List<Amendment> amendments = [
 Amendment(
@@ -7,28 +7,28 @@ Amendment(
     sentenceNumber: 2,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "196-КЗИ-VI",
-    lawDateFrom: "07.27.2016"
+    lawDateFrom: "2016-07-27"
 ),
 Amendment(
     articleNumber: 97,
     paragraphNumber: 4,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "144-КЗИ-VI",
-    lawDateFrom: "06.02.2016"
+    lawDateFrom: "2016-06-02"
 ),
 Amendment(
     articleNumber: 97,
     paragraphNumber: 5,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "144-КЗИ-VI",
-    lawDateFrom: "06.02.2016"
+    lawDateFrom: "2016-06-02"
 ),
 Amendment(
     articleNumber: 86,
     paragraphNumber: 3,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "127-КЗИД-VI",
-    lawDateFrom: "05.19.2016"
+    lawDateFrom: "2016-05-19"
 ),
 Amendment(
     articleNumber: 86,
@@ -37,7 +37,7 @@ Amendment(
     sentenceNumber: 2,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "127-КЗИД-VI",
-    lawDateFrom: "05.19.2016"
+    lawDateFrom: "2016-05-19"
 ),
 Amendment(
     articleNumber: 98,
@@ -46,7 +46,7 @@ Amendment(
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 8,
@@ -55,7 +55,7 @@ Amendment(
     operation: AmendmentOperation.REMOVED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 97,
@@ -63,77 +63,77 @@ Amendment(
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 67,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 68,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 69,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 70,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 71,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 72,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 73,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 74,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 75,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 76,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 55,
@@ -141,7 +141,7 @@ Amendment(
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     sectionName: "III",
@@ -150,7 +150,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     sectionName: "III",
@@ -159,7 +159,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     sectionName: "III",
@@ -168,7 +168,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     sectionName: "III",
@@ -177,7 +177,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     sectionName: "III",
@@ -186,7 +186,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     sectionName: "III",
@@ -195,7 +195,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     sectionName: "III",
@@ -204,7 +204,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     sectionName: "III",
@@ -213,28 +213,28 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 77,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 78,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 56,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     sectionName: "III",
@@ -242,63 +242,63 @@ Amendment(
     operation: AmendmentOperation.RENAMED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 59,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 60,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 61,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 62,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 63,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 64,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 65,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 66,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 54,
@@ -306,7 +306,7 @@ Amendment(
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 54,
@@ -315,7 +315,7 @@ Amendment(
     operation: AmendmentOperation.REMOVED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 97,
@@ -323,7 +323,7 @@ Amendment(
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 87,
@@ -331,7 +331,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 87,
@@ -339,7 +339,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 97,
@@ -348,14 +348,14 @@ Amendment(
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 91,
     operation: AmendmentOperation.REMOVED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 96,
@@ -363,7 +363,7 @@ Amendment(
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     sectionName: "III",
@@ -372,7 +372,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 98,
@@ -380,7 +380,7 @@ Amendment(
     operation: AmendmentOperation.CHANGED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 8,
@@ -389,14 +389,14 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "94-КЗИД-V",
     publishedIn: "САЗ 11-27",
-    lawDateFrom: "07.04.2011"
+    lawDateFrom: "2011-07-04"
 ),
 Amendment(
     articleNumber: 91,
     operation: AmendmentOperation.ADDED,
     lawNumber: "1-КЗИД-IV",
     publishedIn: "САЗ 06-7",
-    lawDateFrom: "02.10.2006"
+    lawDateFrom: "2006-02-10"
 ),
 Amendment(
     sectionName: "III",
@@ -404,7 +404,7 @@ Amendment(
     operation: AmendmentOperation.RENAMED,
     lawNumber: "1-КЗИД-IV",
     publishedIn: "САЗ 06-7",
-    lawDateFrom: "02.10.2006"
+    lawDateFrom: "2006-02-10"
 ),
 Amendment(
     sectionName: "III",
@@ -412,7 +412,7 @@ Amendment(
     operation: AmendmentOperation.REMOVED,
     lawNumber: "1-КЗИД-IV",
     publishedIn: "САЗ 06-7",
-    lawDateFrom: "02.10.2006"
+    lawDateFrom: "2006-02-10"
 ),
 Amendment(
     articleNumber: 87,
@@ -420,14 +420,14 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "593-КЗИД-III",
     publishedIn: "САЗ 05-29",
-    lawDateFrom: "07.13.2005"
+    lawDateFrom: "2005-07-13"
 ),
 Amendment(
     articleNumber: 66,
     operation: AmendmentOperation.CHANGED,
     lawNumber: "593-КЗИД-III",
     publishedIn: "САЗ 05-29",
-    lawDateFrom: "07.13.2005"
+    lawDateFrom: "2005-07-13"
 ),
 Amendment(
     articleNumber: 64,
@@ -436,7 +436,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "593-КЗИД-III",
     publishedIn: "САЗ 05-29",
-    lawDateFrom: "07.13.2005"
+    lawDateFrom: "2005-07-13"
 ),
 Amendment(
     articleNumber: 62,
@@ -445,7 +445,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "593-КЗИД-III",
     publishedIn: "САЗ 05-29",
-    lawDateFrom: "07.13.2005"
+    lawDateFrom: "2005-07-13"
 ),
 Amendment(
     sectionName: "III",
@@ -456,7 +456,7 @@ Amendment(
     ),
     lawNumber: "310-КЗИД",
     publishedIn: "г-та «Приднестровье» от № 132-133 от 12 июля 2000 года, 13 июля 2000 года",
-    lawDateFrom: "06.30.2000"
+    lawDateFrom: "2000-06-30"
 ),
 Amendment(
     sectionName: "V",
@@ -464,7 +464,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "310-КЗИД",
     publishedIn: "г-та «Приднестровье» от № 132-133 от 12 июля 2000 года, 13 июля 2000 года",
-    lawDateFrom: "06.30.2000"
+    lawDateFrom: "2000-06-30"
 ),
 Amendment(
     sectionName: "V",
@@ -472,7 +472,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "310-КЗИД",
     publishedIn: "г-та «Приднестровье» от № 132-133 от 12 июля 2000 года, 13 июля 2000 года",
-    lawDateFrom: "06.30.2000"
+    lawDateFrom: "2000-06-30"
 ),
 Amendment(
     sectionName: "V",
@@ -480,7 +480,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "310-КЗИД",
     publishedIn: "г-та «Приднестровье» от № 132-133 от 12 июля 2000 года, 13 июля 2000 года",
-    lawDateFrom: "06.30.2000"
+    lawDateFrom: "2000-06-30"
 ),
 Amendment(
     sectionName: "V",
@@ -488,7 +488,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "310-КЗИД",
     publishedIn: "г-та «Приднестровье» от № 132-133 от 12 июля 2000 года, 13 июля 2000 года",
-    lawDateFrom: "06.30.2000"
+    lawDateFrom: "2000-06-30"
 ),
 Amendment(
     sectionName: "V",
@@ -496,7 +496,7 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "310-КЗИД",
     publishedIn: "г-та «Приднестровье» от № 132-133 от 12 июля 2000 года, 13 июля 2000 года",
-    lawDateFrom: "06.30.2000"
+    lawDateFrom: "2000-06-30"
 ),
 Amendment(
     sectionName: "V",
@@ -509,7 +509,7 @@ Amendment(
     ),
     lawNumber: "310-КЗИД",
     publishedIn: "г-та «Приднестровье» от № 132-133 от 12 июля 2000 года, 13 июля 2000 года",
-    lawDateFrom: "06.30.2000"
+    lawDateFrom: "2000-06-30"
 ),
 Amendment(
     sectionName: "V",
@@ -522,7 +522,7 @@ Amendment(
     ),
     lawNumber: "310-КЗИД",
     publishedIn: "г-та «Приднестровье» от № 132-133 от 12 июля 2000 года, 13 июля 2000 года",
-    lawDateFrom: "06.30.2000"
+    lawDateFrom: "2000-06-30"
 ),
 Amendment(
     sectionName: "V",
@@ -531,13 +531,13 @@ Amendment(
     operation: AmendmentOperation.ADDED,
     lawNumber: "310-КЗИД",
     publishedIn: "г-та «Приднестровье» от № 132-133 от 12 июля 2000 года, 13 июля 2000 года",
-    lawDateFrom: "06.30.2000"
+    lawDateFrom: "2000-06-30"
 ),
 Amendment(
     articleNumber: 67,
     operation: AmendmentOperation.ADDED,
     lawNumber: "128-КЗД",
     publishedIn: "СЗМР 98-4",
-    lawDateFrom: "12.15.1998"
+    lawDateFrom: "1998-12-15"
 )
 ];

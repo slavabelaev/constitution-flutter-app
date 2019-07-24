@@ -41,6 +41,8 @@ class AppSearchDelegate extends SearchDelegate<int> {
   }
 
   bool _hasSuggestionsByText(List<String> textElements) {
+    if (textElements == null) return false;
+
     String text = textElements.join();
     return text != null && RegExp(query.toLowerCase())
       .hasMatch(text.toLowerCase());

@@ -1,4 +1,11 @@
 class Amendment extends AmendmentBase {
+  final String sectionName;
+  final num chapterNumber;
+  final num articleNumber;
+  final num paragraphNumber;
+  final String subParagraphName;
+  final num partNumber;
+  final num sentenceNumber;
   final String lawNumber;
   final String lawDateFrom;
   final String publishedIn;
@@ -6,13 +13,13 @@ class Amendment extends AmendmentBase {
   final AmendmentBase replacedFrom;
 
   Amendment({
-    sectionName,
-    chapterNumber,
-    articleNumber,
-    paragraphNumber,
-    subParagraphName,
-    partNumber,
-    sentenceNumber,
+    this.sectionName,
+    this.chapterNumber,
+    this.articleNumber,
+    this.paragraphNumber,
+    this.subParagraphName,
+    this.partNumber,
+    this.sentenceNumber,
     this.lawNumber,
     this.lawDateFrom,
     this.publishedIn,

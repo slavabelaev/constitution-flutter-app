@@ -1,5 +1,5 @@
-import '../classes/chapter.dart';
-import '../classes/section.dart';
+import '../../classes/chapter.dart';
+import '../../classes/section.dart';
 
 List<Section> content = [
   Section(

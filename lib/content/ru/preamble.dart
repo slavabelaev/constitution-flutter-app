@@ -1,4 +1,4 @@
-import '../classes/preamble.dart';
+import '../../classes/preamble.dart';
 
 Preamble preamble = Preamble(
   paragraphs: [

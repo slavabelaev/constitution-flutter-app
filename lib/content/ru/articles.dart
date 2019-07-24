@@ -1,6 +1,6 @@
-import '../classes/article.dart';
-import '../classes/paragraph.dart';
-import '../classes/sub_paragraph.dart';
+import '../../classes/article.dart';
+import '../../classes/paragraph.dart';
+import '../../classes/sub_paragraph.dart';
 
 List<Article> articles = [
   Article(section: "I", number: 1, parts: [

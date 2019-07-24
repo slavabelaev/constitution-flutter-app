@@ -5,7 +5,7 @@ import '../classes/section.dart';
 import '../classes/chapter.dart';
 import '../models/app_model.dart';
 import '../routes/article_list_route.dart';
-import '../routes/preable_route.dart';
+import '../routes/preamble_route.dart';
 
 class ContentView extends StatelessWidget {
   ContentView(this.content);
@@ -124,9 +124,7 @@ class ContentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _children = [
-      Padding(padding: const EdgeInsets.all(8.0)),
-    ];
+    List<Widget> _children = [];
 
     content.forEach((section) {
       Widget _widget = (section.chapters != null) ?
@@ -137,6 +135,7 @@ class ContentView extends StatelessWidget {
 
     return ListView(
       children: _children,
+      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
     );
   }
 }
