@@ -46,7 +46,7 @@ class _ArticleCardState extends State<ArticleCard> {
             TextSpan(text: '${subParagraph.text}')
           ]
       )),
-      margin: EdgeInsets.only(bottom: isLast ? 0 : 16.0),
+      margin: EdgeInsets.only(bottom: isLast ? 0 : 8.0),
     );
   }
 
