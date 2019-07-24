@@ -11,7 +11,11 @@ class PreambleRoute extends StatelessWidget {
   final String title;
 
   Widget _buildParagraph(paragraph) {
-    return Text(paragraph);
+    bool isLast = preamble.paragraphs.last == paragraph;
+    return Container(
+      child: Text(paragraph),
+      margin: EdgeInsets.only(bottom: isLast ? 0 : 16.0),
+    );
   }
 
   Widget _buildPreamble() {
