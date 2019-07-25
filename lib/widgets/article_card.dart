@@ -132,7 +132,7 @@ class _ArticleCardState extends State<ArticleCard> {
     String lineBreak = '\r\n\r\n';
     String articleText = '${localizations.article} ${article.number}' + lineBreak;
 
-    if (article.parts != null) articleText += article.parts.join(lineBreak) + lineBreak;
+    if (article.introduction != null) articleText += article.introduction.join(lineBreak) + lineBreak;
 
     if (article.paragraphs != null) {
       article.paragraphs.forEach((paragraph) {
@@ -148,6 +148,8 @@ class _ArticleCardState extends State<ArticleCard> {
 
       });
     }
+
+    if (article.conclusion != null) articleText += article.conclusion.join(lineBreak) + lineBreak;
 
     return articleText;
   }
@@ -222,15 +224,21 @@ class _ArticleCardState extends State<ArticleCard> {
     );
   }
 
-  Widget _buildArticleText() {
-    Article _article = widget.article;
-
-    if (_article.parts == null) return Container();
+  Widget _buildArticleText(List<String> texts) {
+    if (texts == null) return Container();
 
     return Container(
-      child: _buildSplitText(_article.parts),
+      child: _buildSplitText(texts),
       padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
     );
+  }
+
+  Widget _buildArticleIntroduction() {
+    return _buildArticleText(widget.article.introduction);
+  }
+
+  Widget _buildArticleConclusion() {
+    return _buildArticleText(widget.article.conclusion);
   }
 
   @override
@@ -241,8 +249,9 @@ class _ArticleCardState extends State<ArticleCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           _buildCardHeader(),
-          _buildArticleText(),
-          _buildParagraphs()
+          _buildArticleIntroduction(),
+          _buildParagraphs(),
+          _buildArticleConclusion()
         ],
       )
     );

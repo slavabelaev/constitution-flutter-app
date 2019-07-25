@@ -75,11 +75,17 @@ class AppSearchDelegate extends SearchDelegate<int> {
   }
 
   bool _hasSuggestions(Article article) {
-    bool hasSuggestionsByText = _hasSuggestionsByText(article.parts);
+    bool hasSuggestionsByIntroduction = _hasSuggestionsByText(article.introduction);
+    bool hasSuggestionsByConclusion = _hasSuggestionsByText(article.conclusion);
     bool hasSuggestionsByParagraphs = _hasSuggestionsByParagraphs(article);
     bool hasSuggestionsByNumber = _hasSuggestionsByNumber(article.number);
 
-    return hasSuggestionsByNumber || hasSuggestionsByText || hasSuggestionsByParagraphs;
+    return (
+      hasSuggestionsByNumber ||
+      hasSuggestionsByIntroduction ||
+      hasSuggestionsByConclusion ||
+      hasSuggestionsByParagraphs
+    );
   }
 
   @override

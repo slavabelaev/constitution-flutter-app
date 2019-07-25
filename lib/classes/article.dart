@@ -5,14 +5,16 @@ class Article {
   final num number;
   final String section;
   final num chapter;
-  final List<String> parts;
+  final List<String> introduction;
+  final List<String> conclusion;
   final List<Paragraph> paragraphs;
 
   Article({
     @required this.number,
     @required this.section,
     this.chapter,
-    this.parts,
-    this.paragraphs
+    this.introduction,
+    this.paragraphs,
+    this.conclusion
   });
 }
