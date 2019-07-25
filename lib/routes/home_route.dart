@@ -113,8 +113,8 @@ class _HomeRouteState extends State<HomeRoute> {
         builder: (context) => SimpleDialog(
           children: <Widget>[
             SimpleDialogOption(
-                child: Text('Русский'),
-                onPressed: () => changeLocale('ru')
+              child: Text('Русский'),
+              onPressed: () => changeLocale('ru')
             ),
             SimpleDialogOption(
                 child: Text('Молдавеняскэ'),
