@@ -36,6 +36,7 @@ class LocalizationValues {
   final ArticleCardLocalizations articleCard;
   final AmendmentListViewLocalizations amendmentListView;
   final ArticleListViewLocalizations articleListView;
+  final ContentViewLocalizations contentView;
   final SettingsRouteLocalizations settingsRoute;
   final HomeRouteLocalizations homeRoute;
 
@@ -48,6 +49,7 @@ class LocalizationValues {
     this.bottomNavigationBar,
     this.articleCard,
     this.articleListView,
+    this.contentView,
     this.amendmentCard,
     this.amendmentListView,
     this.settingsRoute,
@@ -66,6 +68,14 @@ class BottomNavigationBarLocalizations {
     this.articles,
     this.bookmarks,
     this.amendments
+  });
+}
+
+class ContentViewLocalizations {
+  final String articles;
+
+  ContentViewLocalizations({
+    this.articles
   });
 }
 
@@ -193,6 +203,9 @@ class AppLocalizations {
       articleListView: ArticleListViewLocalizations(
         emptyMessage: 'Ничего нет'
       ),
+      contentView: ContentViewLocalizations(
+        articles: 'Статьи'
+      ),
       amendmentCard: AmendmentCardLocalizations(
           section: 'раздел',
           chapter: 'глава',
@@ -230,48 +243,51 @@ class AppLocalizations {
       content: content_md,
       amendments: amendments_md,
       bottomNavigationBar: BottomNavigationBarLocalizations(
-        byTopic: 'По темам',
-        articles: 'Статьи',
-        bookmarks: 'Закладки',
-        amendments: 'Поправки'
+        byTopic: 'Субьектеле',
+        articles: 'Артиколе',
+        bookmarks: 'Маркаӂе',
+        amendments: 'Амендаменте'
       ),
       articleListView: ArticleListViewLocalizations(
-        emptyMessage: 'Ничего нет'
+        emptyMessage: 'Нимик'
+      ),
+      contentView: ContentViewLocalizations(
+        articles: 'Артиколе'
       ),
       articleCard: ArticleCardLocalizations(
-        article: 'Статья',
-        paragraph: 'Пункт',
-        share: 'Поделиться',
-        addToBookmarks: 'Добавить в закладки'
+        article: 'Артиколул',
+        paragraph: 'Пунктул',
+        share: 'Тримитети',
+        addToBookmarks: 'Адаугати ла маркаӂе'
       ),
       amendmentCard: AmendmentCardLocalizations(
-        section: 'раздел',
-        chapter: 'глава',
-        article: 'статья',
-        paragraph: 'пункт',
-        subParagraph: 'подпункт',
-        part: 'часть',
-        sentence: 'предложение',
-        added: 'Дополнено',
-        changed: 'Исправлено',
-        removed: 'Удалено',
-        renamed: 'Переименовано',
-        replaced: 'Перемещено из',
-        replacedTo: 'Перемещено в',
-        publishedIn: 'Опубликовано в',
-        law: 'Закон',
-        from: 'от'
+        section: 'титлул',
+        chapter: 'капитолул',
+        article: 'артиколул',
+        paragraph: 'пунктул',
+        subParagraph: 'суб пунктул',
+        part: 'парте',
+        sentence: 'пропунере',
+        added: 'Модификат',
+        changed: 'Фиксат',
+        removed: 'Елеминат',
+        renamed: 'Реденумит',
+        replaced: 'Мутат де ла',
+        replacedTo: 'Мутат ла',
+        publishedIn: 'Постат ын',
+        law: 'Лежя',
+        from: 'де ла'
       ),
       settingsRoute: SettingsRouteLocalizations(
-        title: 'Настройки',
-        darkTheme: 'Темная тема',
-        fontSize: 'Размер шрифта'
+        title: 'Сетэриле',
+        darkTheme: 'Тема ынтунеката',
+        fontSize: 'Дименсиуня фонтулуй'
       ),
       homeRoute: HomeRouteLocalizations(
-          noArticles: 'Нет статей',
-          noBookmarks: 'Нет закладок',
-          chooseLanguage: 'Выбрать язык',
-          settings: 'Настройки'
+          noArticles: 'Ну екзистэ артикол',
+          noBookmarks: 'Ну екзистэ маркаӂе',
+          chooseLanguage: 'Селектат лимба',
+          settings: 'Сетэриле'
       )
     ),
     'ua': LocalizationValues(
@@ -288,6 +304,9 @@ class AppLocalizations {
       ),
       articleListView: ArticleListViewLocalizations(
         emptyMessage: 'Ничего нет'
+      ),
+      contentView: ContentViewLocalizations(
+        articles: 'Статьи'
       ),
       articleCard: ArticleCardLocalizations(
         article: 'Статья',
@@ -335,6 +354,7 @@ class AppLocalizations {
   BottomNavigationBarLocalizations get bottomNavigationBar => _localizedValues[locale.languageCode].bottomNavigationBar;
   ArticleCardLocalizations get articleCard => _localizedValues[locale.languageCode].articleCard;
   ArticleListViewLocalizations get articleListView => _localizedValues[locale.languageCode].articleListView;
+  ContentViewLocalizations get contentView => _localizedValues[locale.languageCode].contentView;
   AmendmentListViewLocalizations get amendmentListView => _localizedValues[locale.languageCode].amendmentListView;
   AmendmentCardLocalizations get amendmentCard => _localizedValues[locale.languageCode].amendmentCard;
   SettingsRouteLocalizations get settingsRoute => _localizedValues[locale.languageCode].settingsRoute;

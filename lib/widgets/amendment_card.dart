@@ -116,9 +116,11 @@ class AmendmentCard extends StatelessWidget {
 
  Widget _buildHeader(BuildContext context) {
     return ListTile(
+      leading: CircleAvatar(
+        child: Icon(_getIcon()),
+      ),
       title: Text('${localizations.law} ${amendment.lawNumber}', style: Theme.of(context).textTheme.title),
       subtitle: Text('${localizations.from} ${amendment.lawDateFrom}'),
-      trailing: Icon(_getIcon()),
     );
   }
 

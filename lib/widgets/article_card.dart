@@ -54,7 +54,7 @@ class _ArticleCardState extends State<ArticleCard> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: subParagraphs.map(
-        (item) => _buildSubParagraph(item, item == subParagraphs.last)
+              (item) => _buildSubParagraph(item, item == subParagraphs.last)
       ).toList(),
     );
   }
@@ -82,7 +82,10 @@ class _ArticleCardState extends State<ArticleCard> {
     }
 
     Widget _buildSubParagraphsIfExists() =>
-      _hasSubParagraphs ? _buildSubParagraphs(paragraph.subParagraphs) : Container();
+      _hasSubParagraphs ? Container(
+        child: _buildSubParagraphs(paragraph.subParagraphs),
+        margin: EdgeInsets.only(bottom: _hasConclusion ? 16.0 : 0),
+      ) : Container();
 
     Widget _buildConclusionIfExists() =>
         _hasConclusion ? _buildSplitText(paragraph.conclusion) : Container();

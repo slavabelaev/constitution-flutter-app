@@ -9,6 +9,8 @@ import '../l10n/app_localizations.dart';
 class ContentView extends StatelessWidget {
   ContentView(this.content);
 
+  ContentViewLocalizations localizations;
+
   final List<Section> content;
   final TextStyle _titleStyle = TextStyle(
       color: Color.fromRGBO(255, 255, 255, 0.87),
@@ -61,7 +63,7 @@ class ContentView extends StatelessWidget {
     bool isPreamble = (section.startsWith == 0);
 
     Widget _buildSubtitle() {
-      return isPreamble ? null : Text('Статьи ${section.startsWith}-${section.endsWith}');
+      return isPreamble ? null : Text('${localizations.articles} ${section.startsWith}-${section.endsWith}');
     }
 
     return ListTile(
@@ -96,7 +98,7 @@ class ContentView extends StatelessWidget {
         chapter.title,
         style: _titleStyle,
       ),
-      subtitle: Text('Статьи ${chapter.startsWith}-${chapter.endsWith}'),
+      subtitle: Text('${localizations.articles} ${chapter.startsWith}-${chapter.endsWith}'),
       onTap: () => _showArticles(context, chapter.title, section.name, chapter.startsWith, chapter.endsWith),
     );
   }
@@ -119,6 +121,7 @@ class ContentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    localizations = AppLocalizations.of(context).contentView;
     List<Widget> _children = [];
 
     content.forEach((section) {
