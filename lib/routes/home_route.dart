@@ -101,27 +101,30 @@ class _HomeRouteState extends State<HomeRoute> {
     );
   }
 
+  void changeLocale(String languageCode) {
+    LocaleModel localeModel = Provider.of<LocaleModel>(context);
+    localeModel.change(Locale(languageCode));
+    Navigator.pop(context);
+  }
+
   void _showLanguageDialog() {
     showDialog(
         context: context,
-        builder: (context) =>
-          Consumer<LocaleModel>(builder: (context, locale, child) =>
-            SimpleDialog(
-              children: <Widget>[
-                SimpleDialogOption(
-                    child: Text('Русский'),
-                    onPressed: () => locale.change(Locale('ru'))
-                ),
-                SimpleDialogOption(
-                    child: Text('Молдавеняскэ'),
-                    onPressed: () => locale.change(Locale('md'))
-                ),
-                SimpleDialogOption(
-                    child: Text('Український'),
-                    onPressed: () => locale.change(Locale('ua'))
-                )
-              ],
+        builder: (context) => SimpleDialog(
+          children: <Widget>[
+            SimpleDialogOption(
+                child: Text('Русский'),
+                onPressed: () => changeLocale('ru')
+            ),
+            SimpleDialogOption(
+                child: Text('Молдавеняскэ'),
+                onPressed: () => changeLocale('md')
+            ),
+            SimpleDialogOption(
+                child: Text('Український'),
+                onPressed: () => changeLocale('ua')
             )
+          ],
         )
     );
   }
