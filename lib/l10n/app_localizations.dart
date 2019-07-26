@@ -34,7 +34,7 @@ import 'package:constitution/routes/settings_route/settings_route_localizations.
 import 'package:constitution/routes/home_route/home_route_localizations.dart';
 import 'package:constitution/widgets/app_search_delegate/app_search_delegate_localizations.dart';
 
-import '../models/locale_model.dart';
+import '../models/settings_model.dart';
 
 class AppLocalizations {
   AppLocalizations(this.locale);
@@ -42,9 +42,9 @@ class AppLocalizations {
   final Locale locale;
 
   static AppLocalizations of(BuildContext context) {
-    LocaleModel localeModel = Provider.of<LocaleModel>(context);
-    return (localeModel.locale != null) ?
-      AppLocalizations(localeModel.locale) :
+    SettingsModel settingsModel = Provider.of<SettingsModel>(context);
+    return (settingsModel.locale != null) ?
+      AppLocalizations(settingsModel.locale) :
       Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 

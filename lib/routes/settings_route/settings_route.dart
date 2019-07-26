@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../l10n/app_localizations.dart';
 import 'settings_route_localizations.dart';
+import '../../models/settings_model.dart';
 
 class SettingsRoute extends StatelessWidget {
 
@@ -18,9 +20,11 @@ class SettingsRoute extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-          ListTile(
-            title: Text(localizations.settingsRoute.darkTheme, style: _titleStyle),
-            trailing: Switch(value: true, onChanged: null),
+          Consumer<SettingsModel>(builder: (context, settingsModel, child) =>
+            ListTile(
+              title: Text(localizations.settingsRoute.darkTheme, style: _titleStyle),
+              trailing: Switch(value: settingsModel.isDarkThemeEnabled, onChanged: settingsModel.toggleDarkTheme),
+            )
           ),
           ListTile(
             title: Text(localizations.settingsRoute.fontSize, style: _titleStyle),

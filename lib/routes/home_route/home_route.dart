@@ -9,7 +9,7 @@ import '../../models/favorites_model.dart';
 import '../../routes/settings_route./settings_route.dart';
 import '../../l10n/app_localizations.dart';
 import 'home_route_localizations.dart';
-import '../../models/locale_model.dart';
+import '../../models/settings_model.dart';
 
 class HomeRoute extends StatefulWidget {
   @override
@@ -110,9 +110,9 @@ class _HomeRouteState extends State<HomeRoute> {
     );
   }
 
-  void changeLocale(String languageCode) {
-    LocaleModel localeModel = Provider.of<LocaleModel>(context);
-    localeModel.change(Locale(languageCode));
+  void switchLocale(String languageCode) {
+    SettingsModel settingsModel = Provider.of<SettingsModel>(context);
+    settingsModel.switchLocale(Locale(languageCode));
     Navigator.pop(context);
   }
 
@@ -123,15 +123,15 @@ class _HomeRouteState extends State<HomeRoute> {
           children: <Widget>[
             SimpleDialogOption(
               child: Text('Русский'),
-              onPressed: () => changeLocale('ru')
+              onPressed: () => switchLocale('ru')
             ),
             SimpleDialogOption(
                 child: Text('Молдавеняскэ'),
-                onPressed: () => changeLocale('md')
+                onPressed: () => switchLocale('md')
             ),
             SimpleDialogOption(
                 child: Text('Український'),
-                onPressed: () => changeLocale('ua')
+                onPressed: () => switchLocale('ua')
             )
           ],
         )

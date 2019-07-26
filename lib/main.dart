@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'models/favorites_model.dart';
-import 'models/locale_model.dart';
+import 'models/settings_model.dart';
 import 'l10n/app_localizations.dart';
 import 'package:constitution/routes/home_route/home_route.dart';
 
@@ -11,7 +11,7 @@ void main() {
     MultiProvider(
         providers: [
           ChangeNotifierProvider(builder: (context) => FavoritesModel()),
-          ChangeNotifierProvider(builder: (context) => LocaleModel()),
+          ChangeNotifierProvider(builder: (context) => SettingsModel()),
         ],
         child: App()
     )
@@ -100,21 +100,24 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: _lightTheme,
-      darkTheme: _darkTheme,
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        AppLocalizations.delegate
-      ],
-      supportedLocales: [
-        const Locale('ru'),
-        const Locale('md'),
-        const Locale('ua'),
-      ],
-      home: HomeRoute()//HomeRoute()
+    return Consumer<SettingsModel>(
+      builder: (context, settingsModel, child) =>
+        MaterialApp(
+            theme: settingsModel.isDarkThemeEnabled ? _darkTheme : _lightTheme,
+            darkTheme: _darkTheme,
+            localizationsDelegates: [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              AppLocalizations.delegate
+            ],
+            supportedLocales: [
+              const Locale('ru'),
+              const Locale('md'),
+              const Locale('ua'),
+            ],
+            home: HomeRoute()//HomeRoute()
+        ),
     );
   }
 }
