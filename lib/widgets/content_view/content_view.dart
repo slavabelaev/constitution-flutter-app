@@ -15,7 +15,7 @@ class ContentView extends StatelessWidget {
   final List<Section> content;
   final TextStyle _leadingStyle = TextStyle(
     fontWeight: FontWeight.bold,
-    color: Colors.white
+    color: Colors.white70
   );
 
   void _showArticles(
