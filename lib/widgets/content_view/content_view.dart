@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import '../classes/article.dart';
-import '../classes/section.dart';
-import '../classes/chapter.dart';
-import '../routes/article_list_route.dart';
-import '../routes/preamble_route.dart';
-import '../l10n/app_localizations.dart';
+import '../../classes/article.dart';
+import '../../classes/section.dart';
+import '../../classes/chapter.dart';
+import '../../routes/article_list_route/article_list_route.dart';
+import '../../routes/preamble_route/preamble_route.dart';
+import '../../l10n/app_localizations.dart';
+import 'content_view_localizations.dart';
 
 class ContentView extends StatelessWidget {
   ContentView(this.content);

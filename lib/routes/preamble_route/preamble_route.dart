@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import '../classes/preamble.dart';
+import '../../classes/preamble.dart';
 
 class PreambleRoute extends StatelessWidget {
   PreambleRoute(this.preamble, {

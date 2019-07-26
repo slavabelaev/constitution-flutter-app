@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
-import '../l10n/app_localizations.dart';
+import '../../l10n/app_localizations.dart';
+import 'settings_route_localizations.dart';
 
 class SettingsRoute extends StatelessWidget {
 
-  SettingsRouteLocalizations localizations;
+  AppLocalizations localizations;
 
   @override
   Widget build(BuildContext context) {
-    localizations = AppLocalizations.of(context).settingsRoute;
+    localizations = AppLocalizations.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(localizations.title),
+        title: Text(localizations.settingsRoute.title),
       ),
       body: ListView(
         children: <Widget>[
           ListTile(
-            title: Text(localizations.darkTheme),
+            title: Text(localizations.settingsRoute.darkTheme),
             trailing: Switch(value: true, onChanged: null),
           ),
           ListTile(
-            title: Text(localizations.fontSize),
+            title: Text(localizations.settingsRoute.fontSize),
             trailing: Switch(value: true, onChanged: null),
           ),
         ],

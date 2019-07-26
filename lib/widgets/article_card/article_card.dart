@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
-import '../widgets/custom_divider.dart';
-import '../models/favorites_model.dart';
-import '../classes/article.dart';
-import '../classes/paragraph.dart';
-import '../classes/sub_paragraph.dart';
-import '../l10n/app_localizations.dart';
+import '../../widgets/custom_divider/custom_divider.dart';
+import '../../models/favorites_model.dart';
+import '../../classes/article.dart';
+import '../../classes/paragraph.dart';
+import '../../classes/sub_paragraph.dart';
+import '../../l10n/app_localizations.dart';
+import 'article_card_localizations.dart';
 
 class ArticleCard extends StatefulWidget {
   ArticleCard(this.article);

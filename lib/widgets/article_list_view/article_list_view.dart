@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../classes/article.dart';
-import '../widgets/article_card.dart';
-import '../l10n/app_localizations.dart';
+import '../../classes/article.dart';
+import 'package:constitution/widgets/article_card/article_card.dart';
+import '../../l10n/app_localizations.dart';
+import 'article_list_view_localizations.dart';
 
 class ArticleListView extends StatelessWidget {
   ArticleListView(this.articles, {this.emptyMessage, this.controller, this.onItemTap});

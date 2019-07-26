@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'models/favorites_model.dart';
 import 'models/locale_model.dart';
 import 'l10n/app_localizations.dart';
-import 'package:constitution/routes/home_route.dart';
+import 'package:constitution/routes/home_route/home_route.dart';
 
 void main() {
   runApp(

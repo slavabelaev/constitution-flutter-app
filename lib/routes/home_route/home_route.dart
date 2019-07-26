@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../widgets/app_bottom_navigation_bar.dart';
-import '../widgets/app_search_delegate.dart';
-import '../widgets/content_view.dart';
-import '../widgets/article_list_view.dart';
-import '../widgets/amendment_list_view.dart';
-import '../models/favorites_model.dart';
-import '../routes/settings_route.dart';
-import '../l10n/app_localizations.dart';
-import '../models/locale_model.dart';
+import '../../widgets/app_bottom_navigation_bar/app_bottom_navigation_bar.dart';
+import 'package:constitution/widgets/app_search_delegate/app_search_delegate.dart';
+import 'package:constitution/widgets/content_view/content_view.dart';
+import 'package:constitution/widgets/article_list_view/article_list_view.dart';
+import 'package:constitution/widgets/amendment_list_view/amendment_list_view.dart';
+import '../../models/favorites_model.dart';
+import '../../routes/settings_route./settings_route.dart';
+import '../../l10n/app_localizations.dart';
+import 'home_route_localizations.dart';
+import '../../models/locale_model.dart';
 
 class HomeRoute extends StatefulWidget {
   @override

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import '../classes/article.dart';
-import '../classes/paragraph.dart';
-import '../widgets/article_list_view.dart';
+import '../../classes/article.dart';
+import '../../classes/paragraph.dart';
+import '../../widgets/article_list_view/article_list_view.dart';
+import '../../l10n/app_localizations.dart';
+import 'app_search_delegate_localizations.dart';
 
 class AppSearchDelegate extends SearchDelegate<int> {
   AppSearchDelegate(this.articles);
@@ -22,14 +24,17 @@ class AppSearchDelegate extends SearchDelegate<int> {
     );
   }
 
-  String _getEmptyMessage() {
-    return query.isEmpty ? 'Начинайте вводить' : 'Ничего не найдено';
+  String _getEmptyMessage(BuildContext context) {
+    AppSearchDelegateLocalizations localizations = AppLocalizations.of(context).appSearchDelegate;
+    return query.isEmpty ? localizations.startSearch : localizations.noResults;
   }
 
   @override
   Widget buildLeading(BuildContext context) {
+    AppSearchDelegateLocalizations localizations = AppLocalizations.of(context).appSearchDelegate;
+
     return IconButton(
-      tooltip: 'Back',
+      tooltip: localizations.back,
       icon: AnimatedIcon(
         icon: AnimatedIcons.menu_arrow,
         progress: transitionAnimation,
@@ -96,7 +101,7 @@ class AppSearchDelegate extends SearchDelegate<int> {
 
     return ArticleListView(
         suggestions,
-        emptyMessage: _getEmptyMessage(),
+        emptyMessage: _getEmptyMessage(context),
         onItemTap: () => FocusScope.of(context).unfocus(),
     );
   }
@@ -110,14 +115,14 @@ class AppSearchDelegate extends SearchDelegate<int> {
 
     return ArticleListView(
       suggestions,
-      emptyMessage: _getEmptyMessage(),
+      emptyMessage: _getEmptyMessage(context),
     );
   }
 
   Widget _buildNoSuggestions(BuildContext context, String query) {
     return Center(
       child: Text(
-        _getEmptyMessage(),
+        _getEmptyMessage(context),
         style: Theme.of(context).textTheme.title,
         textAlign: TextAlign.center,
       ),
@@ -126,9 +131,11 @@ class AppSearchDelegate extends SearchDelegate<int> {
 
   @override
   List<Widget> buildActions(BuildContext context) {
+    AppSearchDelegateLocalizations localizations = AppLocalizations.of(context).appSearchDelegate;
+
     return <Widget>[
       (query.isEmpty) ? Container() : IconButton(
-        tooltip: 'Clear',
+        tooltip: localizations.clear,
         icon: const Icon(Icons.clear),
         onPressed: () {
           query = '';

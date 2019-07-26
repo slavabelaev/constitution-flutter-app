@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import '../l10n/app_localizations.dart';
+import '../../l10n/app_localizations.dart';
+import 'app_bottom_navigation_bar_localizations.dart';
 
 class AppBottomNavigationBar extends StatefulWidget {
   AppBottomNavigationBar({this.onIndexChange});
@@ -15,7 +16,7 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
 
   int _selectedIndex = 0;
 
-  BottomNavigationBarLocalizations get localizations =>
+  AppBottomNavigationBarLocalizations get localizations =>
       AppLocalizations.of(context).bottomNavigationBar;
 
   void handleTap(int selectedIndex) {

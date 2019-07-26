@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../classes/amendment.dart';
-import '../widgets/custom_divider.dart';
-import '../l10n/app_localizations.dart';
+import '../../classes/amendment.dart';
+import '../../widgets/custom_divider/custom_divider.dart';
+import '../../l10n/app_localizations.dart';
+import 'amendment_card_localizations.dart';
 
 class AmendmentCard extends StatelessWidget {
   AmendmentCard(this.amendment);

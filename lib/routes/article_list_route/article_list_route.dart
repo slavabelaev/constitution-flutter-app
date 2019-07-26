@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/article_list_view.dart';
-import '../classes/article.dart';
+import 'package:constitution/widgets/article_list_view/article_list_view.dart';
+import '../../classes/article.dart';
 
 class ArticleListRoute extends StatelessWidget {
   ArticleListRoute(this.articles, {this.title});

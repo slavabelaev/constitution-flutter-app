@@ -1,0 +1,3 @@
+class AmendmentListViewLocalizations {
+  AmendmentListViewLocalizations();
+}

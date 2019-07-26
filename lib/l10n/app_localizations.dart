@@ -19,155 +19,22 @@ import 'package:constitution/l10n/ua/articles_ua.dart';
 import 'package:constitution/l10n/ua/content_ua.dart';
 import 'package:constitution/l10n/ua/amendments_ua.dart';
 
+import 'package:constitution/classes/localization_values.dart';
 import '../classes/article.dart';
 import '../classes/amendment.dart';
 import '../classes/section.dart';
 import '../classes/preamble.dart';
+import 'package:constitution/widgets/app_bottom_navigation_bar/app_bottom_navigation_bar_localizations.dart';
+import 'package:constitution/widgets/amendment_card/amendment_card_localizations.dart';
+import 'package:constitution/widgets/article_card/article_card_localizations.dart';
+import 'package:constitution/widgets/amendment_list_view/amendment_list_view_localizations.dart';
+import 'package:constitution/widgets/article_list_view/article_list_view_localizations.dart';
+import 'package:constitution/widgets/content_view/content_view_localizations.dart';
+import 'package:constitution/routes/settings_route/settings_route_localizations.dart';
+import 'package:constitution/routes/home_route/home_route_localizations.dart';
+import 'package:constitution/widgets/app_search_delegate/app_search_delegate_localizations.dart';
+
 import '../models/locale_model.dart';
-
-class LocalizationValues {
-  final String title;
-  final Preamble preamble;
-  final List<Article> articles;
-  final List<Section> content;
-  final List<Amendment> amendments;
-  final BottomNavigationBarLocalizations bottomNavigationBar;
-  final AmendmentCardLocalizations amendmentCard;
-  final ArticleCardLocalizations articleCard;
-  final AmendmentListViewLocalizations amendmentListView;
-  final ArticleListViewLocalizations articleListView;
-  final ContentViewLocalizations contentView;
-  final SettingsRouteLocalizations settingsRoute;
-  final HomeRouteLocalizations homeRoute;
-
-  LocalizationValues({
-    this.title,
-    this.preamble,
-    this.articles,
-    this.content,
-    this.amendments,
-    this.bottomNavigationBar,
-    this.articleCard,
-    this.articleListView,
-    this.contentView,
-    this.amendmentCard,
-    this.amendmentListView,
-    this.settingsRoute,
-    this.homeRoute
-  });
-}
-
-class BottomNavigationBarLocalizations {
-  final String byTopic;
-  final String articles;
-  final String bookmarks;
-  final String amendments;
-
-  BottomNavigationBarLocalizations({
-    this.byTopic,
-    this.articles,
-    this.bookmarks,
-    this.amendments
-  });
-}
-
-class ContentViewLocalizations {
-  final String articles;
-
-  ContentViewLocalizations({
-    this.articles
-  });
-}
-
-class AmendmentCardLocalizations {
-  final String section;
-  final String chapter;
-  final String article;
-  final String paragraph;
-  final String subParagraph;
-  final String part;
-  final String sentence;
-  final String added;
-  final String changed;
-  final String removed;
-  final String renamed;
-  final String replaced;
-  final String replacedTo;
-  final String publishedIn;
-  final String law;
-  final String from;
-
-  AmendmentCardLocalizations({
-    this.section,
-    this.chapter,
-    this.article,
-    this.paragraph,
-    this.subParagraph,
-    this.part,
-    this.sentence,
-    this.added,
-    this.changed,
-    this.removed,
-    this.renamed,
-    this.replaced,
-    this.replacedTo,
-    this.publishedIn,
-    this.law,
-    this.from
-  });
-}
-
-class ArticleCardLocalizations {
-  final String article;
-  final String paragraph;
-  final String share;
-  final String addToBookmarks;
-
-  ArticleCardLocalizations({
-    this.article,
-    this.paragraph,
-    this.share,
-    this.addToBookmarks
-  });
-}
-
-class SettingsRouteLocalizations {
-  final String title;
-  final String darkTheme;
-  final String fontSize;
-
-  SettingsRouteLocalizations({
-    this.title,
-    this.darkTheme,
-    this.fontSize
-  });
-}
-
-class HomeRouteLocalizations {
-  final String noArticles;
-  final String noBookmarks;
-  final String chooseLanguage;
-  final String settings;
-
-  HomeRouteLocalizations({
-    this.noArticles,
-    this.noBookmarks,
-    this.chooseLanguage,
-    this.settings
-  });
-}
-
-class AmendmentListViewLocalizations {
-  AmendmentListViewLocalizations();
-}
-
-class ArticleListViewLocalizations {
-  final emptyMessage;
-
-  ArticleListViewLocalizations({
-    this.emptyMessage
-  });
-}
 
 class AppLocalizations {
   AppLocalizations(this.locale);
@@ -188,7 +55,7 @@ class AppLocalizations {
       articles: articles_ru,
       content: content_ru,
       amendments: amendments_ru,
-      bottomNavigationBar: BottomNavigationBarLocalizations(
+      bottomNavigationBar: AppBottomNavigationBarLocalizations(
         byTopic: 'По темам',
         articles: 'Статьи',
         bookmarks: 'Закладки',
@@ -224,6 +91,12 @@ class AppLocalizations {
           law: 'Закон',
           from: 'от'
       ),
+      appSearchDelegate: AppSearchDelegateLocalizations(
+        startSearch: 'Начинайте вводить',
+        noResults: 'Ничего не найдено',
+        back: 'Вернуться',
+        clear: 'Очистить'
+      ),
       settingsRoute: SettingsRouteLocalizations(
         title: 'Настройки',
         darkTheme: 'Темная тема',
@@ -242,7 +115,7 @@ class AppLocalizations {
       articles: articles_md,
       content: content_md,
       amendments: amendments_md,
-      bottomNavigationBar: BottomNavigationBarLocalizations(
+      bottomNavigationBar: AppBottomNavigationBarLocalizations(
         byTopic: 'Субьектеле',
         articles: 'Артиколе',
         bookmarks: 'Маркаӂе',
@@ -278,6 +151,12 @@ class AppLocalizations {
         law: 'Лежя',
         from: 'де ла'
       ),
+      appSearchDelegate: AppSearchDelegateLocalizations(
+        startSearch: 'Начинайте вводить',
+        noResults: 'Ничего не найдено',
+        back: 'Вернуться',
+        clear: 'Очистить'
+      ),
       settingsRoute: SettingsRouteLocalizations(
         title: 'Сетэриле',
         darkTheme: 'Тема ынтунеката',
@@ -296,7 +175,7 @@ class AppLocalizations {
       articles: articles_ua,
       content: content_ua,
       amendments: amendments_ua,
-      bottomNavigationBar: BottomNavigationBarLocalizations(
+      bottomNavigationBar: AppBottomNavigationBarLocalizations(
         byTopic: 'За темами',
         articles: 'Статті',
         bookmarks: 'Закладки',
@@ -332,6 +211,12 @@ class AppLocalizations {
         law: 'Закон',
         from: 'от'
       ),
+      appSearchDelegate: AppSearchDelegateLocalizations(
+        startSearch: 'Начинайте вводить',
+        noResults: 'Ничего не найдено',
+        back: 'Вернуться',
+        clear: 'Очистить'
+      ),
       settingsRoute: SettingsRouteLocalizations(
         title: 'Настройки',
         darkTheme: 'Темная тема',
@@ -351,12 +236,13 @@ class AppLocalizations {
   List<Article> get articles => _localizedValues[locale.languageCode].articles;
   List<Section> get content => _localizedValues[locale.languageCode].content;
   List<Amendment> get amendments => _localizedValues[locale.languageCode].amendments;
-  BottomNavigationBarLocalizations get bottomNavigationBar => _localizedValues[locale.languageCode].bottomNavigationBar;
+  AppBottomNavigationBarLocalizations get bottomNavigationBar => _localizedValues[locale.languageCode].bottomNavigationBar;
   ArticleCardLocalizations get articleCard => _localizedValues[locale.languageCode].articleCard;
   ArticleListViewLocalizations get articleListView => _localizedValues[locale.languageCode].articleListView;
   ContentViewLocalizations get contentView => _localizedValues[locale.languageCode].contentView;
   AmendmentListViewLocalizations get amendmentListView => _localizedValues[locale.languageCode].amendmentListView;
   AmendmentCardLocalizations get amendmentCard => _localizedValues[locale.languageCode].amendmentCard;
+  AppSearchDelegateLocalizations get appSearchDelegate => _localizedValues[locale.languageCode].appSearchDelegate;
   SettingsRouteLocalizations get settingsRoute => _localizedValues[locale.languageCode].settingsRoute;
   HomeRouteLocalizations get homeRoute => _localizedValues[locale.languageCode].homeRoute;
 
