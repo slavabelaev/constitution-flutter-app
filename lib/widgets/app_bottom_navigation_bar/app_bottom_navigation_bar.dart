@@ -26,6 +26,10 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
+    TextStyle _titleStyle = Theme.of(context).textTheme.body1.copyWith(
+      fontWeight: FontWeight.w500
+    );
+    Color _iconColor = Theme.of(context).iconTheme.color;
     // TODO: implement build
     return Container(
       child: BottomNavigationBar(
@@ -34,24 +38,60 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
         onTap: (selectedIndex) =>  handleTap(selectedIndex),
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(MdiIcons.bookOutline),
-              activeIcon: Icon(MdiIcons.book),
-              title: Text(localizations.byTopic)
+              icon: Icon(
+                MdiIcons.bookOutline,
+                color: _iconColor,
+              ),
+              activeIcon: Icon(
+                MdiIcons.book,
+                color: _iconColor,
+              ),
+              title: Text(
+                localizations.byTopic,
+                style: _titleStyle,
+              ),
           ),
           BottomNavigationBarItem(
-              icon: Icon(MdiIcons.fileDocumentBoxMultipleOutline),
-              activeIcon: Icon(MdiIcons.fileDocumentBoxMultiple),
-              title: Text(localizations.articles)
+              icon: Icon(
+                MdiIcons.fileDocumentBoxMultipleOutline,
+                color: _iconColor,
+              ),
+              activeIcon: Icon(
+                MdiIcons.fileDocumentBoxMultiple,
+                color: _iconColor,
+              ),
+              title: Text(
+                localizations.articles,
+                style: _titleStyle,
+              )
           ),
           BottomNavigationBarItem(
-              icon: Icon(MdiIcons.bookmarkMultipleOutline),
-              activeIcon: Icon(MdiIcons.bookmarkMultiple),
-              title: Text(localizations.bookmarks)
+              icon: Icon(
+                MdiIcons.bookmarkMultipleOutline,
+                color: _iconColor,
+              ),
+              activeIcon: Icon(
+                MdiIcons.bookmarkMultiple,
+                color: _iconColor,
+              ),
+              title: Text(
+                localizations.bookmarks,
+                style: _titleStyle,
+              )
           ),
           BottomNavigationBarItem(
-              icon: Icon(MdiIcons.pencilOutline),
-              activeIcon: Icon(MdiIcons.pencil),
-              title: Text(localizations.amendments)
+              icon: Icon(
+                MdiIcons.pencilOutline,
+                color: _iconColor,
+              ),
+              activeIcon: Icon(
+                MdiIcons.pencil,
+                color: _iconColor,
+              ),
+              title: Text(
+                localizations.amendments,
+                style: _titleStyle,
+              )
           ),
         ],
       )

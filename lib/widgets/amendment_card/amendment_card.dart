@@ -165,8 +165,7 @@ class AmendmentCard extends StatelessWidget {
           CustomDivider(),
           _buildBody(context)
         ],
-      ),
-      margin: const EdgeInsets.all(0),
+      )
     );
   }
 }

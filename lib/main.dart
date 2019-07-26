@@ -19,48 +19,80 @@ void main() {
 }
 
 class App extends StatelessWidget {
-  final ThemeData theme = ThemeData.dark().copyWith(
-    // Define the default brightness and colors.
-    brightness: Brightness.dark,
-    primaryColor: Colors.grey[900],
-    accentColor: Colors.white,
 
-    // Define the default font family.
-    //fontFamily: 'Montserrat',
+  ThemeData get _lightTheme {
+    ThemeData _theme = ThemeData.light();
+    return _theme.copyWith(
+        primaryColor: Colors.grey[900],
+        cardTheme: _theme.cardTheme.copyWith(
+            margin: const EdgeInsets.all(0),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+        ),
+        primaryTextTheme: _theme.primaryTextTheme.copyWith(
+            headline: _theme.primaryTextTheme.headline.copyWith(
+                //color: Colors.grey[900]
+            )
+        ),
+        textTheme: TextTheme(
+            body1: _theme.textTheme.body1.copyWith(
+              fontSize: 16.0,
+              height: 1.5
+            ),
+            title: _theme.textTheme.title.copyWith(
+              fontSize: 18.0,
+              height: 1.25
+            ),
+            subtitle: _theme.textTheme.subtitle.copyWith(
+              height: 1.5,
+              fontSize: 16.0,
+              color: Colors.grey[700]
+            )
+        )
+    );
+  }
 
-    backgroundColor: Colors.black,
-    bottomAppBarColor: Colors.grey[900],
-    canvasColor: Colors.grey[900],
-
-    cardColor: Colors.grey[900],
-
-    scaffoldBackgroundColor: Color.fromRGBO(0, 0, 0, 0.07),
-
-    iconTheme: IconThemeData().copyWith(
-      opacity: .87,
-      color: Colors.white
-    ),
-
-    // Define the default TextTheme. Use this to specify the default
-    // text styling for headlines, titles, bodies of text, and more.
-    textTheme: TextTheme(
-      headline: TextStyle(
-        fontSize: 72.0,
-        fontWeight: FontWeight.bold,
-        color: Color.fromRGBO(255, 255, 255, 0.87),
-      ),
-      title: TextStyle(
-        fontSize: 20.0,
-        color: Color.fromRGBO(255, 255, 255, 0.87)
-      ),
-      body1: TextStyle(
-        fontSize: 16.0,
-        height: 1.5,
-        //fontFamily: 'Hind',
-        color: Color.fromRGBO(255, 255, 255, 0.87)
-      ),
-    ),
-  );
+  ThemeData get _darkTheme {
+    ThemeData _theme = ThemeData.dark();
+    Color white87 = Color.fromRGBO(255, 255, 255, .87);
+    return _theme.copyWith(
+        primaryColor: Colors.grey[900],
+        cardColor: _theme.primaryColor,
+        cardTheme: _theme.cardTheme.copyWith(
+          margin: const EdgeInsets.all(0),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+        ),
+        scaffoldBackgroundColor: Colors.black87,
+        canvasColor: Colors.black87,
+        dialogTheme: _theme.dialogTheme.copyWith(
+          backgroundColor: Colors.grey[900]
+        ),
+        iconTheme: _theme.iconTheme.copyWith(
+          color: white87
+        ),
+        primaryTextTheme: _theme.primaryTextTheme.copyWith(
+          headline: _theme.primaryTextTheme.headline.copyWith(
+            color: Colors.grey[900]
+          )
+        ),
+        textTheme: TextTheme(
+            body1: _theme.textTheme.body1.copyWith(
+              fontSize: 16.0,
+              height: 1.5,
+              color: white87
+            ),
+            title: _theme.textTheme.title.copyWith(
+                fontSize: 18.0,
+                height: 1.25,
+                color: white87
+            ),
+            subtitle: _theme.textTheme.subtitle.copyWith(
+                height: 1.5,
+                fontSize: 16.0,
+                color: white87
+            )
+        )
+    );
+  }
 
   AppLocalizations getLocalizations(context, Locale locale) {
     return (locale != null) ? AppLocalizations(locale) : AppLocalizations.of(context);
@@ -69,7 +101,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: theme,
+      theme: _lightTheme,
+      darkTheme: _darkTheme,
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

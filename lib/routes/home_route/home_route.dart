@@ -76,6 +76,8 @@ class _HomeRouteState extends State<HomeRoute> {
     );
   }
 
+  TextStyle get _popupMenuItemStyle => Theme.of(context).textTheme.body1;
+
   Widget _buildPopupMenu() {
     return PopupMenuButton(
         icon: Icon(Icons.more_vert),
@@ -92,11 +94,17 @@ class _HomeRouteState extends State<HomeRoute> {
         itemBuilder: (context) => [
           PopupMenuItem(
             value: popupMenuOptions.chooseLanguage,
-            child: Text(localizations.chooseLanguage),
+            child: Text(
+              localizations.chooseLanguage,
+              style: _popupMenuItemStyle,
+            ),
           ),
           PopupMenuItem(
             value: popupMenuOptions.settings,
-            child: Text(localizations.settings),
+            child: Text(
+              localizations.settings,
+              style: _popupMenuItemStyle,
+            ),
           )
         ]
     );

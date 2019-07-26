@@ -13,13 +13,9 @@ class ContentView extends StatelessWidget {
   ContentViewLocalizations localizations;
 
   final List<Section> content;
-  final TextStyle _titleStyle = TextStyle(
-      color: Color.fromRGBO(255, 255, 255, 0.87),
-      height: 1.25,
-      fontWeight: FontWeight.w500
-  );
   final TextStyle _leadingStyle = TextStyle(
-      fontWeight: FontWeight.w500
+    fontWeight: FontWeight.bold,
+    color: Colors.white
   );
 
   void _showArticles(
@@ -64,7 +60,10 @@ class ContentView extends StatelessWidget {
     bool isPreamble = (section.startsWith == 0);
 
     Widget _buildSubtitle() {
-      return isPreamble ? null : Text('${localizations.articles} ${section.startsWith}-${section.endsWith}');
+      return isPreamble ? null : Text(
+        '${localizations.articles} ${section.startsWith}-${section.endsWith}',
+        style: Theme.of(context).textTheme.subtitle,
+      );
     }
 
     return ListTile(
@@ -73,11 +72,11 @@ class ContentView extends StatelessWidget {
           section.name,
           style: _leadingStyle
         ),
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       title: Text(
         section.title,
-        style: _titleStyle
+        style: Theme.of(context).textTheme.title
       ),
       subtitle: _buildSubtitle(),
       onTap: () => isPreamble ?
@@ -89,7 +88,7 @@ class ContentView extends StatelessWidget {
   Widget _buildChapterListTile(BuildContext context, Section section, Chapter chapter) {
     return ListTile(
       leading: CircleAvatar(
-        backgroundColor: Colors.grey[800],
+        backgroundColor: Theme.of(context).primaryColor,
         child: Text(
           chapter.number.toString(),
           style: _leadingStyle
@@ -97,9 +96,12 @@ class ContentView extends StatelessWidget {
       ),
       title: Text(
         chapter.title,
-        style: _titleStyle,
+        style: Theme.of(context).textTheme.title,
       ),
-      subtitle: Text('${localizations.articles} ${chapter.startsWith}-${chapter.endsWith}'),
+      subtitle: Text(
+        '${localizations.articles} ${chapter.startsWith}-${chapter.endsWith}',
+        style: Theme.of(context).textTheme.subtitle,
+      ),
       onTap: () => _showArticles(context, chapter.title, section.name, chapter.startsWith, chapter.endsWith),
     );
   }
@@ -107,12 +109,15 @@ class ContentView extends StatelessWidget {
   Widget _buildListTileWithChapters(BuildContext context, Section section) {
     return ExpansionTile(
       leading: CircleAvatar(
-        backgroundColor: Colors.grey[900],
-        child: Text(section.name),
+        backgroundColor: Theme.of(context).primaryColor,
+        child: Text(
+          section.name,
+          style: _leadingStyle,
+        ),
       ),
       title: Text(
         section.title,
-        style: _titleStyle
+        style: Theme.of(context).textTheme.title
       ),
       children: section.chapters.map(
           (chapter) => _buildChapterListTile(context, section, chapter)

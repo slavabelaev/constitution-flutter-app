@@ -33,7 +33,7 @@ class PreambleRoute extends StatelessWidget {
         title: Text(title),
       ),
       body: ListView(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0),
         children: <Widget>[
           Card(
             child: Padding(

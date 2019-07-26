@@ -17,9 +17,9 @@ class AppSearchDelegate extends SearchDelegate<int> {
     final ThemeData theme = Theme.of(context);
     assert(theme != null);
     return theme.copyWith(
-      //primaryColor: Colors.grey[900],
+      primaryColor: theme.primaryTextTheme.headline.color,
       primaryIconTheme: theme.primaryIconTheme.copyWith(color: Colors.grey),
-      //primaryColorBrightness: Brightness.dark,
+      primaryColorBrightness: Brightness.dark,
       primaryTextTheme: theme.textTheme,
     );
   }

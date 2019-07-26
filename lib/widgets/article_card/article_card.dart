@@ -27,13 +27,15 @@ class _ArticleCardState extends State<ArticleCard> {
     setState(() => checked = !checked);
   }
 
-  final TextStyle _subParagraphTitleStyle = TextStyle(
-      fontWeight: FontWeight.bold
+  TextStyle get _titleStyle => Theme.of(context).textTheme.title.copyWith(
+    fontSize: 20.0
   );
-  final TextStyle _paragraphTitleStyle = TextStyle(
-      fontSize: 18.0,
-      height: 1,
-      fontWeight: FontWeight.w600
+
+  TextStyle get _subParagraphTitleStyle => Theme.of(context).textTheme.title.copyWith(
+    fontSize: 16.0
+  );
+  TextStyle get _paragraphTitleStyle => Theme.of(context).textTheme.title.copyWith(
+    fontSize: 18.0
   );
 
   Widget _buildSubParagraph(SubParagraph subParagraph, bool isLast) {
@@ -183,7 +185,7 @@ class _ArticleCardState extends State<ArticleCard> {
           child: Container(
             child: Text(
                 '${localizations.article} ${article.number}',
-                style: Theme.of(context).textTheme.title
+                style: _titleStyle
             ),
             padding: const EdgeInsets.all(16.0),
           )
@@ -245,7 +247,6 @@ class _ArticleCardState extends State<ArticleCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
