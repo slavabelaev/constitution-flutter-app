@@ -142,13 +142,6 @@ class AmendmentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     localizations = AppLocalizations.of(context).amendmentCard;
-//    List<String> dateElements = amendment.lawDateFrom.split('-');
-//    DateTime dateTime = DateTime(
-//      int.parse(dateElements[0]),
-//      int.parse(dateElements[1]),
-//      int.parse(dateElements[2])
-//    );
-    //print(int.parse(dateElements[1]));
     return Card(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

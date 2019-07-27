@@ -34,7 +34,6 @@ class FavoritesModel with ChangeNotifier {
     prefs.setStringList('favoriteIds', favoriteIds);
 
     notifyListeners();
-    print(prefs.get('favoriteIds'));
   }
 
   void remove(Uid id) {

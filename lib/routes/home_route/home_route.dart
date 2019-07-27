@@ -41,8 +41,6 @@ class _HomeRouteState extends State<HomeRoute> {
   Widget _buildFavoritesTabPage() {
     return Consumer<FavoritesModel>(
         builder: (context, favorites, child) {
-          print('-----------');
-          print(favorites.itemIds);
           return ArticleListView(
               favorites.filter(AppLocalizations.of(context).articles),
               emptyMessage: localizations.noBookmarks

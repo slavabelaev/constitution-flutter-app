@@ -35,8 +35,8 @@ class _AppState extends State<App> {
     return _theme.copyWith(
         primaryColor: Colors.grey[900],
         cardTheme: _theme.cardTheme.copyWith(
-            margin: const EdgeInsets.all(0),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+          margin: const EdgeInsets.all(0),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
         primaryTextTheme: _theme.primaryTextTheme.copyWith(
             headline: _theme.primaryTextTheme.headline.copyWith(
