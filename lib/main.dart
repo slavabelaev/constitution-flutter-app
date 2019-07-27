@@ -111,8 +111,15 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return Consumer<SettingsModel>(
-      builder: (context, settingsModel, child) =>
-        MaterialApp(
+      builder: (context, settingsModel, child) {
+
+        if (!settingsModel.settingsLoaded) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+
+        return MaterialApp(
             theme: settingsModel.isDarkThemeEnabled ? _darkTheme : _lightTheme,
             darkTheme: _darkTheme,
             localizationsDelegates: [
@@ -127,7 +134,8 @@ class _AppState extends State<App> {
               const Locale('uk'),
             ],
             home: HomeRoute()//HomeRoute()
-        ),
+        );
+      }
     );
   }
 }

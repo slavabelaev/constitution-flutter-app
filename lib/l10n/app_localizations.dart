@@ -85,8 +85,8 @@ class AppLocalizations {
           changed: 'Изменение',
           removed: 'Исключение',
           renamed: 'Переименование',
-          replaced: 'Перенос из',
-          replacedTo: 'Перенос в',
+          replaced: 'Перенос в',
+          replacedTo: 'Перенос из',
           publishedIn: 'Публикация',
           law: 'Закон',
           from: 'от'
