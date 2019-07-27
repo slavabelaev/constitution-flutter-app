@@ -1,7 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'paragraph.dart';
+import 'uid.dart';
 
 class Article {
+  final Uid uid;
   final num number;
   final String section;
   final num chapter;
@@ -10,6 +12,7 @@ class Article {
   final List<Paragraph> paragraphs;
 
   Article({
+    @required this.uid,
     @required this.number,
     @required this.section,
     this.chapter,

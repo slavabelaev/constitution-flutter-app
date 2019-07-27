@@ -1,6 +1,6 @@
 import '../../classes/preamble.dart';
 
-Preamble preamble_ru = Preamble(
+Preamble preambleRU = Preamble(
   paragraphs: [
     "Мы, многонациональный народ Приднестровской Молдавской Республики,",
     "— соединенные общей судьбой на своей земле;",

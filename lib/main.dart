@@ -18,7 +18,17 @@ void main() {
   );
 }
 
-class App extends StatelessWidget {
+class App extends StatefulWidget {
+  @override
+  _AppState createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+
+  @override
+  initState() {
+    super.initState();
+  }
 
   ThemeData get _lightTheme {
     ThemeData _theme = ThemeData.light();

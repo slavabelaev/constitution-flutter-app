@@ -1,7 +1,7 @@
 import '../../classes/chapter.dart';
 import '../../classes/section.dart';
 
-List<Section> content_md = [
+List<Section> contentMD = [
   Section(
     name: "П",
     title: "ПРЕАМБУЛ",

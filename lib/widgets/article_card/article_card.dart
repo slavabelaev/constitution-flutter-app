@@ -57,7 +57,7 @@ class _ArticleCardState extends State<ArticleCard> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: subParagraphs.map(
-              (item) => _buildSubParagraph(item, item == subParagraphs.last)
+        (item) => _buildSubParagraph(item, item == subParagraphs.last)
       ).toList(),
     );
   }
@@ -208,9 +208,9 @@ class _ArticleCardState extends State<ArticleCard> {
         child: Consumer<FavoritesModel>(
           builder: (context, favorites, child) => IconButton(
               icon:
-              Icon(favorites.contains(article) ? Icons.bookmark : Icons.bookmark_border),
+              Icon(favorites.contains(article.uid) ? Icons.bookmark : Icons.bookmark_border),
               onPressed: () {
-                favorites.toggle(article);
+                favorites.toggle(article.uid);
                 _toggleCheck(article);
               }
           ),

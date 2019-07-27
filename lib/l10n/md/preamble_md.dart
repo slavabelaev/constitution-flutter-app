@@ -1,6 +1,6 @@
 import '../../classes/preamble.dart';
 
-Preamble preamble_md = Preamble(
+Preamble preambleMD = Preamble(
   paragraphs: [
     "Ной, попорул мултинационал ал Републичий Молдовенешть Нистрене,",
     "— униць ку соартэ комунэ пе пэмынтул ностру;",

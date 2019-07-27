@@ -1,6 +1,6 @@
 import '../../classes/amendment.dart';
 
-List<Amendment> amendments_md = [
+List<Amendment> amendmentsMD = [
 Amendment(
     articleNumber: 72,
     paragraphNumber: 2,

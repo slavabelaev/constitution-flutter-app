@@ -51,10 +51,10 @@ class AppLocalizations {
   static Map<String, LocalizationValues> _localizedValues = {
     'ru': LocalizationValues(
       title: 'Конституция ПМР',
-      preamble: preamble_ru,
-      articles: articles_ru,
-      content: content_ru,
-      amendments: amendments_ru,
+      preamble: preambleRU,
+      articles: articlesRU,
+      content: contentRU,
+      amendments: amendmentsRU,
       bottomNavigationBar: AppBottomNavigationBarLocalizations(
         byTopic: 'По темам',
         articles: 'Статьи',
@@ -111,10 +111,10 @@ class AppLocalizations {
     ),
     'md': LocalizationValues(
       title: 'Конституция РМН',
-      preamble: preamble_md,
-      articles: articles_md,
-      content: content_md,
-      amendments: amendments_md,
+      preamble: preambleMD,
+      articles: articlesMD,
+      content: contentMD,
+      amendments: amendmentsMD,
       bottomNavigationBar: AppBottomNavigationBarLocalizations(
         byTopic: 'Субьектеле',
         articles: 'Артиколе',
@@ -171,10 +171,10 @@ class AppLocalizations {
     ),
     'uk': LocalizationValues(
       title: 'Конституція ПМР',
-      preamble: preamble_uk,
-      articles: articles_uk,
-      content: content_uk,
-      amendments: amendments_uk,
+      preamble: preambleUK,
+      articles: articlesUK,
+      content: contentUK,
+      amendments: amendmentsUK,
       bottomNavigationBar: AppBottomNavigationBarLocalizations(
         byTopic: 'За темами',
         articles: 'Статті',
