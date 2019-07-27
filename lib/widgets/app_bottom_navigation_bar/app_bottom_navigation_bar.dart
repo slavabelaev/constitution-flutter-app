@@ -33,6 +33,7 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
     // TODO: implement build
     return Container(
       child: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         showUnselectedLabels: true,
         currentIndex: _selectedIndex,
         onTap: (selectedIndex) =>  handleTap(selectedIndex),

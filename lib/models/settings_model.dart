@@ -5,11 +5,11 @@ class SettingsModel with ChangeNotifier {
   SettingsModel() {
     _load();
   }
-  
+
+  bool loaded = false;
   Locale locale;
   bool isDarkThemeEnabled;
   String prefix = 'settings_';
-  bool settingsLoaded = false;
 
   void _load() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -17,7 +17,7 @@ class SettingsModel with ChangeNotifier {
 
     String languageCode = prefs.getString(prefix + 'languageCode');
     if (languageCode != null) locale = Locale(languageCode);
-    settingsLoaded = true;
+    loaded = true;
     notifyListeners();
   }
 

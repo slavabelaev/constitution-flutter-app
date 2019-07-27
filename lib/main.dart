@@ -111,16 +111,16 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return Consumer<SettingsModel>(
-      builder: (context, settingsModel, child) {
+      builder: (context, settings, child) {
 
-        if (!settingsModel.settingsLoaded) {
+        if (!settings.loaded) {
           return Center(
             child: CircularProgressIndicator(),
           );
         }
 
         return MaterialApp(
-            theme: settingsModel.isDarkThemeEnabled ? _darkTheme : _lightTheme,
+            theme: settings.isDarkThemeEnabled ? _darkTheme : _lightTheme,
             darkTheme: _darkTheme,
             localizationsDelegates: [
               GlobalMaterialLocalizations.delegate,

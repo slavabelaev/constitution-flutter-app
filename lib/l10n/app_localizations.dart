@@ -56,7 +56,7 @@ class AppLocalizations {
       content: contentRU,
       amendments: amendmentsRU,
       bottomNavigationBar: AppBottomNavigationBarLocalizations(
-        byTopic: 'По темам',
+        byTopic: 'Темы',
         articles: 'Статьи',
         bookmarks: 'Закладки',
         amendments: 'Поправки'
@@ -176,7 +176,7 @@ class AppLocalizations {
       content: contentUK,
       amendments: amendmentsUK,
       bottomNavigationBar: AppBottomNavigationBarLocalizations(
-        byTopic: 'За темами',
+        byTopic: 'Теми',
         articles: 'Статті',
         bookmarks: 'Закладки',
         amendments: 'Поправки'
