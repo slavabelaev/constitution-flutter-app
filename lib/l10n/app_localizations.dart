@@ -14,10 +14,10 @@ import 'package:constitution/l10n/md/articles_md.dart';
 import 'package:constitution/l10n/md/content_md.dart';
 import 'package:constitution/l10n/md/amendments_md.dart';
 // l10n Ukraine
-import 'package:constitution/l10n/ua/preamble_ua.dart';
-import 'package:constitution/l10n/ua/articles_ua.dart';
-import 'package:constitution/l10n/ua/content_ua.dart';
-import 'package:constitution/l10n/ua/amendments_ua.dart';
+import 'package:constitution/l10n/uk/preamble_uk.dart';
+import 'package:constitution/l10n/uk/articles_uk.dart';
+import 'package:constitution/l10n/uk/content_uk.dart';
+import 'package:constitution/l10n/uk/amendments_uk.dart';
 
 import 'package:constitution/classes/localization_values.dart';
 import '../classes/article.dart';
@@ -81,13 +81,13 @@ class AppLocalizations {
           subParagraph: 'подпункт',
           part: 'часть',
           sentence: 'предложение',
-          added: 'Дополнено',
-          changed: 'Исправлено',
-          removed: 'Удалено',
-          renamed: 'Переименовано',
-          replaced: 'Перемещено из',
-          replacedTo: 'Перемещено в',
-          publishedIn: 'Опубликовано в',
+          added: 'Дополнение',
+          changed: 'Изменение',
+          removed: 'Исключение',
+          renamed: 'Переименование',
+          replaced: 'Перенос из',
+          replacedTo: 'Перенос в',
+          publishedIn: 'Публикация',
           law: 'Закон',
           from: 'от'
       ),
@@ -169,12 +169,12 @@ class AppLocalizations {
           settings: 'Сетэриле'
       )
     ),
-    'ua': LocalizationValues(
+    'uk': LocalizationValues(
       title: 'Конституція ПМР',
-      preamble: preamble_ua,
-      articles: articles_ua,
-      content: content_ua,
-      amendments: amendments_ua,
+      preamble: preamble_uk,
+      articles: articles_uk,
+      content: content_uk,
+      amendments: amendments_uk,
       bottomNavigationBar: AppBottomNavigationBarLocalizations(
         byTopic: 'За темами',
         articles: 'Статті',
@@ -202,7 +202,7 @@ class AppLocalizations {
         part: 'часть',
         sentence: 'предложение',
         added: 'Дополнено',
-        changed: 'Исправлено',
+        changed: 'Изменено',
         removed: 'Удалено',
         renamed: 'Переименовано',
         replaced: 'Перемещено из',
@@ -253,7 +253,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const AppLocalizationsDelegate();
 
   @override
-  bool isSupported(Locale locale) => ['ru', 'ua', 'md'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => ['ru', 'uk', 'md'].contains(locale.languageCode);
 
   @override
   Future<AppLocalizations> load(Locale locale) {

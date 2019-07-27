@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 import '../../classes/amendment.dart';
 import '../../widgets/custom_divider/custom_divider.dart';
 import '../../l10n/app_localizations.dart';
+import '../../models/settings_model.dart';
 import 'amendment_card_localizations.dart';
+
 
 class AmendmentCard extends StatelessWidget {
   AmendmentCard(this.amendment);
@@ -90,17 +94,6 @@ class AmendmentCard extends StatelessWidget {
     }
   }
 
-  IconData _getIcon() {
-    switch(amendment.operation) {
-      case AmendmentOperation.ADDED: return Icons.add;
-      case AmendmentOperation.CHANGED: return Icons.edit;
-      case AmendmentOperation.REMOVED: return Icons.remove;
-      case AmendmentOperation.RENAMED: return Icons.title;
-      case AmendmentOperation.REPLACED: return Icons.swap_horiz;
-      default: return null;
-    }
-  }
-
   Widget _buildPublishingSource() {
     return (amendment.publishedIn != null) ?
       Text.rich(
@@ -116,12 +109,19 @@ class AmendmentCard extends StatelessWidget {
   }
 
  Widget _buildHeader(BuildContext context) {
+   SettingsModel settingsProvider = Provider.of<SettingsModel>(context);
+   String languageCode;
+   if (settingsProvider.locale != null) {
+     languageCode = settingsProvider.locale.languageCode;
+   } else {
+     languageCode = Localizations.localeOf(context).languageCode;
+   }
+   languageCode = languageCode == 'md' ? 'ro' : languageCode;
+   DateTime now = DateTime.now();
+   String formattedDate = DateFormat.yMMMMd(languageCode).format(now);
     return ListTile(
-      leading: CircleAvatar(
-        child: Icon(_getIcon()),
-      ),
       title: Text('${localizations.law} ${amendment.lawNumber}', style: Theme.of(context).textTheme.title),
-      subtitle: Text('${localizations.from} ${amendment.lawDateFrom}'),
+      subtitle: Text('${localizations.from} ${formattedDate}'),
     );
   }
 
@@ -130,16 +130,8 @@ class AmendmentCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Padding(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  _buildSourceOfAmendment(_getOperationName(), amendment),
-                  _buildSourceOfAmendment(localizations.replacedTo, amendment.replacedFrom)
-                ],
-              ),
-              padding: const EdgeInsets.only(bottom: 8.0)
-            ),
+            _buildSourceOfAmendment(_getOperationName(), amendment),
+            _buildSourceOfAmendment(localizations.replacedTo, amendment.replacedFrom),
             _buildPublishingSource()
           ],
         ),

@@ -62,7 +62,7 @@ class App extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
         ),
         scaffoldBackgroundColor: Colors.black87,
-        canvasColor: Colors.black87,
+        canvasColor: Colors.grey[900],
         dialogTheme: _theme.dialogTheme.copyWith(
           backgroundColor: Colors.grey[900]
         ),
@@ -114,7 +114,7 @@ class App extends StatelessWidget {
             supportedLocales: [
               const Locale('ru'),
               const Locale('md'),
-              const Locale('ua'),
+              const Locale('uk'),
             ],
             home: HomeRoute()//HomeRoute()
         ),

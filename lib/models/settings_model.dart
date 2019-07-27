@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class SettingsModel with ChangeNotifier {
   Locale locale;
-  bool isDarkThemeEnabled = false;
+  bool isDarkThemeEnabled = true;
 
   void switchLocale(Locale newLocale) {
     locale = newLocale;

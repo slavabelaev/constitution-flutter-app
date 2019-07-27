@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../l10n/app_localizations.dart';
-import 'settings_route_localizations.dart';
 import '../../models/settings_model.dart';
+import 'settings_route_localizations.dart';
 
 class SettingsRoute extends StatelessWidget {
 

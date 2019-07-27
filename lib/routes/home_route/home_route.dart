@@ -131,7 +131,7 @@ class _HomeRouteState extends State<HomeRoute> {
             ),
             SimpleDialogOption(
                 child: Text('Український'),
-                onPressed: () => switchLocale('ua')
+                onPressed: () => switchLocale('uk')
             )
           ],
         )
