@@ -83,11 +83,11 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
           ),
           BottomNavigationBarItem(
               icon: Icon(
-                MdiIcons.pencilOutline,
+                MdiIcons.alertDecagramOutline,
                 color: _iconColor,
               ),
               activeIcon: Icon(
-                MdiIcons.pencil,
+                MdiIcons.alertDecagram,
                 color: _iconColor,
               ),
               title: Text(

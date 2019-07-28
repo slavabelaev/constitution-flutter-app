@@ -4,79 +4,79 @@ import '../../classes/section.dart';
 List<Section> contentMD = [
   Section(
     name: "П",
-    title: "ПРЕАМБУЛ",
+    title: "Преамбул",
     startsWith: 0,
     endsWith: 0
   ),
   Section(
     name: "I",
-    title: "БАЗЕЛЕ РЕӁИМУЛУЙ КОНСТИТУЦИОНАЛ",
+    title: "Базеле реӂимулуй конституционал",
     startsWith: 1,
     endsWith: 15
   ),
   Section(
     name: "II",
-    title: "ДРЕПТУРИЛЕ, ЛИБЕРТЭЦИЛЕ, ОБЛИГАЦИУНИЛЕ ШИ ГАРАНЦИИЛЕ ОМУЛУЙ ШИ ЧЕТЭЦЯНУЛУЙ",
+    title: "Дрептуриле, либертэциле, облигациуниле ши гаранцииле омулуй ши четэцянулуй",
     startsWith: 16,
     endsWith: 52
   ),
   Section(
     name: "III",
-    title: "БАЗЕЛЕ АДМИНИСТРЭРИЙ ДЕ СТАТ",
+    title: "Базеле администрэрий де стат",
     startsWith: 53,
     endsWith: 100,
     chapters: [
       Chapter(
         number: 1,
-        title: "ДЕЗВОЛТАРЯ ОРЫНДУИРИЙ БАЗЕЛОР КУОНСТИТУЦИОНАЛЕ",
+        title: "Дезволтаря орындуирий базелор куонституционале",
         startsWith: 53,
         endsWith: 58
       ),
       Chapter(
         number: 2,
-        title: "ПРЕШЕДИНТЕЛЕ РЕПУБЛИЧИЙ МОЛДОВЕНЕШТЬ НИСТРЕНЕ",
+        title: "Прешединтеле Републичий Молдовенешть Нистрене",
         startsWith: 59,
         endsWith: 66
       ),
       Chapter(
         number: 3,
-        title: "СОВЕТУЛ СУПРЕМ АЛ РЕПУБЛИЧИЙ МОЛДОВЕНЕШТЬ НИСТРЕНЕ",
+        title: "Советул супрем ал Републичий Молдовенешть Нистрене",
         startsWith: 67,
         endsWith: 76
       ),
       Chapter(
         number: 3.1,
-        title: "ГУВЕРНУЛ РЕПУБЛИЧИЙ МОЛДОВЕНЕШТЬ НИСТРЕНЕ",
+        title: "Гувернул Републичий Молдовенешть Нистрене",
         startsWith: 76.1,
         endsWith: 76.8
       ),
       Chapter(
         number: 4,
-        title: "АДМИНИСТРАРЯ ЛОКАЛЭ ДЕ СТАТ ШИ АУТОАДМИНИСТРАРЯ ЛОКАЛЭ",
+        title: "Администраря локалэ де стат ши аутоадминистраря локалэ",
         startsWith: 77,
         endsWith: 79
       ),
       Chapter(
         number: 5,
-        title: "АУТОРИТАТЯ ЖУДЕКЭТОРЯСКЭ",
+        title: "Ауторитатя жудекэторяскэ",
         startsWith: 80, 
         endsWith: 91
       ),
       Chapter(
         number: 6,
-        title: "СУПРАВЕГЕРЯ АПЛИКЭРИЙ СТРИКТЕ КОНФОРМ КОНСТИТУЦИЕЙ ЛЕЖИЛОР РЕПУБЛИЧИЙ МОДЛДОВЕНЕШТЬ НИСТРНЕ",
+        title: "Суправегеря апликэрий стрикте конформ конституцией лежилор Републичий Модлдовенешть Нистрене",
         startsWith: 92,
         endsWith: 92
       ),
       Chapter(
         number: 7,
-        title: "АПЭРАРЯ, СЕКУРИТАТЯ ШИ АПЛИКАРЯ ЛЕЖИЙ",
+        title: "Апэраря, секуритатя ши апликаря лежий",
         startsWith: 93,
         endsWith: 95
       ),
       Chapter(
         number: 8,
-        title: "ФИНАНСАРЯ ШИ СИСТЕМУЛ БУЖЕТАР",
+        title: "Финансаря ши системул бужетар",
         startsWith: 96,
         endsWith: 100
       )
@@ -84,13 +84,13 @@ List<Section> contentMD = [
   ),
   Section(
     name: "IV",
-    title: "МОДИФИКАРЯ КОНСТИТУЦИЕЙ",
+    title: "Модификаря конституцией",
     startsWith: 101,
     endsWith: 106
   ),
   Section(
     name: "V",
-    title: "НОРМЕЛЕ ШИ РЕГУЛИЛЕ ТРАНЗИТОРИЙ",
+    title: "Нормеле ши регулиле транзиторий",
     startsWith: 1,
     endsWith: 7
   )

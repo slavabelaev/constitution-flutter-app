@@ -29,7 +29,7 @@ class _ArticleCardState extends State<ArticleCard> {
   }
 
   TextStyle get _titleStyle => Theme.of(context).textTheme.title.copyWith(
-    fontSize: Theme.of(context).textTheme.title.fontSize * 1.125
+    fontSize: Theme.of(context).textTheme.title.fontSize
   );
 
   TextStyle get _paragraphTitleStyle => Theme.of(context).textTheme.title;
