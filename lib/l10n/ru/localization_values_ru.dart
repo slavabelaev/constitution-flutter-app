@@ -65,7 +65,7 @@ LocalizationValues localizationValuesRU = LocalizationValues(
         title: 'Настройки',
         darkTheme: 'Темная тема',
         fontSize: 'Размер шрифта',
-        fontSizeDefault: 'по умолчанию',
+        fontSizeDefault: 'обычный',
         fontSizeMedium: 'средний',
         fontSizeLarge: 'большой'
     ),

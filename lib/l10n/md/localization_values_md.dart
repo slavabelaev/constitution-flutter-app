@@ -65,7 +65,7 @@ LocalizationValues localizationValuesMD = LocalizationValues(
         title: 'Сетэриле',
         darkTheme: 'Тема ынтунеката',
         fontSize: 'Дименсиуня фонтулуй',
-        fontSizeDefault: 'ын мод имплицит',
+        fontSizeDefault: 'нормалэ',
         fontSizeMedium: 'медие',
         fontSizeLarge: 'маре'
     ),

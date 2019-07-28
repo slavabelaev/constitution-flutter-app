@@ -65,7 +65,7 @@ LocalizationValues localizationValuesUK = LocalizationValues(
         title: 'Установки',
         darkTheme: 'Темна тема',
         fontSize: 'Розмір шрифту',
-        fontSizeDefault: 'за замовчуванням',
+        fontSizeDefault: 'звичайний',
         fontSizeMedium: 'середній',
         fontSizeLarge: 'великий'
     ),
