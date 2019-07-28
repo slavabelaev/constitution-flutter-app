@@ -61,7 +61,7 @@ class ContentView extends StatelessWidget {
 
     Widget _buildSubtitle() {
       return isPreamble ? null : Text(
-        '${localizations.articles} ${section.startsWith}-${section.endsWith}',
+        '${localizations.articles} ${_getNumber(section.startsWith)}–${_getNumber(section.endsWith)}',
         style: Theme.of(context).textTheme.subtitle,
       );
     }
@@ -85,12 +85,16 @@ class ContentView extends StatelessWidget {
     );
   }
 
+  String _getNumber(num number) {
+    return number.toString().replaceAll('.', '‐');
+  }
+
   Widget _buildChapterListTile(BuildContext context, Section section, Chapter chapter) {
     return ListTile(
       leading: CircleAvatar(
         backgroundColor: Theme.of(context).primaryColor,
         child: Text(
-          chapter.number.toString(),
+          _getNumber(chapter.number),
           style: _leadingStyle
         ),
       ),
@@ -99,7 +103,7 @@ class ContentView extends StatelessWidget {
         style: Theme.of(context).textTheme.title,
       ),
       subtitle: Text(
-        '${localizations.articles} ${chapter.startsWith}-${chapter.endsWith}',
+        '${localizations.articles} ${_getNumber(chapter.startsWith)}–${_getNumber(chapter.endsWith)}',
         style: Theme.of(context).textTheme.subtitle,
       ),
       onTap: () => _showArticles(context, chapter.title, section.name, chapter.startsWith, chapter.endsWith),

@@ -64,6 +64,10 @@ class _ArticleCardState extends State<ArticleCard> {
     );
   }
 
+  String _getNumber(num number) {
+    return number.toString().replaceAll('.', '‐');
+  }
+
   Widget _buildParagraph(Paragraph paragraph) {
     bool _hasIntroduction = (paragraph.introduction != null);
     bool _hasSubParagraphs = (paragraph.subParagraphs != null);
@@ -72,7 +76,7 @@ class _ArticleCardState extends State<ArticleCard> {
     Widget _buildHeader() {
       return Container(
         child: Text(
-          '${localizations.paragraph} ${paragraph.number}',
+          '${localizations.paragraph} ${_getNumber(paragraph.number)}',
           style: _paragraphTitleStyle,
         ),
         margin: const EdgeInsets.only(bottom: 16.0),
@@ -135,13 +139,13 @@ class _ArticleCardState extends State<ArticleCard> {
 
   String _getArticleAsPlainText(Article article) {
     String lineBreak = '\r\n\r\n';
-    String articleText = '${localizations.article} ${article.number}' + lineBreak;
+    String articleText = '${localizations.article} ${_getNumber(article.number)}' + lineBreak;
 
     if (article.introduction != null) articleText += article.introduction.join(lineBreak) + lineBreak;
 
     if (article.paragraphs != null) {
       article.paragraphs.forEach((paragraph) {
-        if (paragraph.number != null) articleText += '${localizations.paragraph} ${paragraph.number}'.toUpperCase() + lineBreak;
+        if (paragraph.number != null) articleText += '${localizations.paragraph} ${_getNumber(paragraph.number)}'.toUpperCase() + lineBreak;
         if (paragraph.introduction != null) articleText += paragraph.introduction.join(lineBreak) + lineBreak;
         if (paragraph.subParagraphs != null) {
           paragraph.subParagraphs.forEach((subParagraph) {
@@ -163,7 +167,7 @@ class _ArticleCardState extends State<ArticleCard> {
     String articleText = _getArticleAsPlainText(article);
     Share.share(
       articleText,
-      subject: 'Статья ${article.number}'
+      subject: '${localizations.article} ${_getNumber(article.number)}'
     );
   }
 
@@ -232,7 +236,7 @@ class _ArticleCardState extends State<ArticleCard> {
       return Expanded(
           child: Container(
             child: Text(
-                '${localizations.article} ${article.number}',
+                '${localizations.article} ${_getNumber(article.number)}',
                 style: _titleStyle
             ),
             padding: const EdgeInsets.all(16.0),
