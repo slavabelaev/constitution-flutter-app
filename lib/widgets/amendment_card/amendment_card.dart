@@ -135,8 +135,8 @@ class AmendmentCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            _buildSourceOfAmendment(_getOperationName(), amendment),
             _buildSourceOfAmendment(localizations.replacedTo, amendment.replacedFrom),
+            _buildSourceOfAmendment(_getOperationName(), amendment),
             _buildPublishingSource()
           ],
         ),

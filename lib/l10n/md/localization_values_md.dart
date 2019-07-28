@@ -33,7 +33,7 @@ LocalizationValues localizationValuesMD = LocalizationValues(
     ),
     articleCard: ArticleCardLocalizations(
         article: 'Артиколул',
-        paragraph: 'Клауза',
+        paragraph: 'Пунктул',
         share: 'Тримитети',
         addToBookmarks: 'Адаугати ла маркаӂе'
     ),
@@ -41,8 +41,8 @@ LocalizationValues localizationValuesMD = LocalizationValues(
         section: 'титлул',
         chapter: 'капитолул',
         article: 'артиколул',
-        paragraph: 'клауза',
-        subParagraph: 'суб-клауза',
+        paragraph: 'пунктул',
+        subParagraph: 'субпунктул',
         part: 'парте',
         sentence: 'пропунере',
         added: 'Адунаря',
