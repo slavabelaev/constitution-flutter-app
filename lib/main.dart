@@ -30,10 +30,11 @@ class _AppState extends State<App> {
     super.initState();
   }
 
-  ThemeData get _lightTheme {
+  ThemeData _getLightTheme(num fontSizeFactor) {
     ThemeData _theme = ThemeData.light();
     return _theme.copyWith(
         primaryColor: Colors.grey[900],
+        accentColor: Colors.grey[900],
         cardTheme: _theme.cardTheme.copyWith(
           margin: const EdgeInsets.all(0),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -45,23 +46,23 @@ class _AppState extends State<App> {
         ),
         textTheme: TextTheme(
             body1: _theme.textTheme.body1.copyWith(
-              fontSize: 16.0,
+              fontSize: 16.0 * fontSizeFactor,
               height: 1.5
             ),
             title: _theme.textTheme.title.copyWith(
-              fontSize: 18.0,
+              fontSize: 18.0 * fontSizeFactor,
               height: 1.25
             ),
             subtitle: _theme.textTheme.subtitle.copyWith(
+              fontSize: 16.0 * fontSizeFactor,
               height: 1.5,
-              fontSize: 16.0,
               color: Colors.grey[700]
             )
         )
     );
   }
 
-  ThemeData get _darkTheme {
+  ThemeData _getDarkTheme(num fontSizeFactor) {
     ThemeData _theme = ThemeData.dark();
     Color white87 = Color.fromRGBO(255, 255, 255, .87);
     return _theme.copyWith(
@@ -86,18 +87,18 @@ class _AppState extends State<App> {
         ),
         textTheme: TextTheme(
             body1: _theme.textTheme.body1.copyWith(
-              fontSize: 16.0,
+              fontSize: 16.0 * fontSizeFactor,
               height: 1.5,
               color: white87
             ),
             title: _theme.textTheme.title.copyWith(
-                fontSize: 18.0,
+                fontSize: 18.0 * fontSizeFactor,
                 height: 1.25,
                 color: white87
             ),
             subtitle: _theme.textTheme.subtitle.copyWith(
+                fontSize: 16.0 * fontSizeFactor,
                 height: 1.5,
-                fontSize: 16.0,
                 color: white87
             )
         )
@@ -120,8 +121,10 @@ class _AppState extends State<App> {
         }
 
         return MaterialApp(
-            theme: settings.isDarkThemeEnabled ? _darkTheme : _lightTheme,
-            darkTheme: _darkTheme,
+            theme: settings.isDarkThemeEnabled ?
+              _getDarkTheme(settings.fontSizeFactor) :
+              _getLightTheme(settings.fontSizeFactor),
+            darkTheme: _getDarkTheme(settings.fontSizeFactor),
             localizationsDelegates: [
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,

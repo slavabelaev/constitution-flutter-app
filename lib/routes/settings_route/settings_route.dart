@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../classes/font_size_factor_option.dart';
+import '../../widgets/custom_divider/custom_divider.dart';
 import '../../l10n/app_localizations.dart';
 import '../../models/settings_model.dart';
 import 'settings_route_localizations.dart';
+
 
 class SettingsRoute extends StatelessWidget {
 
@@ -11,27 +14,50 @@ class SettingsRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     localizations = AppLocalizations.of(context);
-
     TextStyle _titleStyle = Theme.of(context).textTheme.title;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(localizations.settingsRoute.title),
       ),
-      body: ListView(
-        children: <Widget>[
-          Consumer<SettingsModel>(builder: (context, settingsModel, child) =>
+      body:
+
+      Consumer<SettingsModel>(builder: (context, settings, child) =>
+        ListView(
+          children: <Widget>[
             ListTile(
               title: Text(localizations.settingsRoute.darkTheme, style: _titleStyle),
-              trailing: Switch(value: settingsModel.isDarkThemeEnabled, onChanged: settingsModel.toggleDarkTheme),
-            )
-          ),
-          ListTile(
-            title: Text(localizations.settingsRoute.fontSize, style: _titleStyle),
-            trailing: Switch(value: true, onChanged: null),
-          ),
-        ],
-      ),
+              trailing: Switch(
+                value: settings.isDarkThemeEnabled,
+                onChanged: settings.toggleDarkTheme
+              ),
+            ),
+            CustomDivider(),
+            ListTile(
+              title: Text(localizations.settingsRoute.fontSize, style: _titleStyle),
+              trailing: DropdownButton(
+                value: settings.fontSizeFactor,
+                items: [
+                  FontSizeFactorOption(title: 'по умолчанию', value: 1.0),
+                  FontSizeFactorOption(title: 'средний', value: 1.125),
+                  FontSizeFactorOption(title: 'большой', value: 1.25),
+                ]
+                  .map((fontSizeFactorOption) =>
+                    DropdownMenuItem(
+                      child: Text(
+                        fontSizeFactorOption.title,
+                        style: Theme.of(context).textTheme.body1,
+                      ),
+                      value: fontSizeFactorOption.value,
+                    )
+                  ).toList(),
+                onChanged: settings.changeFontSizeFactor
+              ),
+            ),
+            CustomDivider(),
+          ],
+        ),
+      )
     );
   }
 }

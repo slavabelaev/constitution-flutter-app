@@ -27,7 +27,8 @@ class _AppBottomNavigationBarState extends State<AppBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     TextStyle _titleStyle = Theme.of(context).textTheme.body1.copyWith(
-      fontWeight: FontWeight.w500
+      fontWeight: FontWeight.w500,
+      fontSize: 16.0
     );
     Color _iconColor = Theme.of(context).iconTheme.color;
     // TODO: implement build

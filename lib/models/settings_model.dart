@@ -3,27 +3,31 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsModel with ChangeNotifier {
   SettingsModel() {
-    _load();
+    _loadSavedSettings();
   }
 
   bool loaded = false;
   Locale locale;
-  bool isDarkThemeEnabled;
-  String prefix = 'settings_';
+  bool isDarkThemeEnabled = true;
+  num fontSizeFactor = 1.0;
+  String _prefix = 'settings_';
 
-  void _load() async {
+  void _loadSavedSettings() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    isDarkThemeEnabled = prefs.getBool(prefix + 'isDarkThemeEnabled') ?? true;
+    isDarkThemeEnabled = prefs.getBool(_prefix + 'isDarkThemeEnabled') ?? true;
 
-    String languageCode = prefs.getString(prefix + 'languageCode');
+    String languageCode = prefs.getString(_prefix + 'languageCode');
     if (languageCode != null) locale = Locale(languageCode);
+
+    fontSizeFactor = prefs.getDouble(_prefix + 'fontSizeFactor') ?? 1.0;
+
     loaded = true;
     notifyListeners();
   }
 
   void _saveSetting(String settingName, dynamic value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String settingNameWithPrefix = prefix + settingName;
+    String settingNameWithPrefix = _prefix + settingName;
     if (value is bool) {
       prefs.setBool(settingNameWithPrefix, value);
     } else if (value is String) {
@@ -44,9 +48,16 @@ class SettingsModel with ChangeNotifier {
   }
 
   bool toggleDarkTheme(bool enabled) {
-    this.isDarkThemeEnabled = enabled;
+    isDarkThemeEnabled = enabled;
     _saveSetting('isDarkThemeEnabled', enabled);
     notifyListeners();
     return enabled;
+  }
+
+  num changeFontSizeFactor(newFontSizeFactor) {
+    fontSizeFactor = newFontSizeFactor;
+    _saveSetting('fontSizeFactor', newFontSizeFactor);
+    notifyListeners();
+    return newFontSizeFactor;
   }
 }

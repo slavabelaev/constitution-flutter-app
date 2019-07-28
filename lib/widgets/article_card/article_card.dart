@@ -28,14 +28,13 @@ class _ArticleCardState extends State<ArticleCard> {
   }
 
   TextStyle get _titleStyle => Theme.of(context).textTheme.title.copyWith(
-    fontSize: 20.0
+    fontSize: Theme.of(context).textTheme.title.fontSize * 1.125
   );
 
+  TextStyle get _paragraphTitleStyle => Theme.of(context).textTheme.title;
+
   TextStyle get _subParagraphTitleStyle => Theme.of(context).textTheme.title.copyWith(
-    fontSize: 16.0
-  );
-  TextStyle get _paragraphTitleStyle => Theme.of(context).textTheme.title.copyWith(
-    fontSize: 18.0
+      fontSize: Theme.of(context).textTheme.body1.fontSize
   );
 
   Widget _buildSubParagraph(SubParagraph subParagraph, bool isLast) {
