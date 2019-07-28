@@ -20,7 +20,7 @@ LocalizationValues localizationValuesMD = LocalizationValues(
     content: contentMD,
     amendments: amendmentsMD,
     bottomNavigationBar: AppBottomNavigationBarLocalizations(
-        byTopic: 'Субьектеле',
+        byTopic: 'Континутул',
         articles: 'Артиколе',
         bookmarks: 'Маркаӂе',
         amendments: 'Амендаменте'
@@ -33,7 +33,7 @@ LocalizationValues localizationValuesMD = LocalizationValues(
     ),
     articleCard: ArticleCardLocalizations(
         article: 'Артиколул',
-        paragraph: 'Пунктул',
+        paragraph: 'Клауза',
         share: 'Тримитети',
         addToBookmarks: 'Адаугати ла маркаӂе'
     ),
@@ -41,25 +41,25 @@ LocalizationValues localizationValuesMD = LocalizationValues(
         section: 'титлул',
         chapter: 'капитолул',
         article: 'артиколул',
-        paragraph: 'пунктул',
-        subParagraph: 'суб пунктул',
+        paragraph: 'клауза',
+        subParagraph: 'суб-клауза',
         part: 'парте',
         sentence: 'пропунере',
-        added: 'Модификат',
-        changed: 'Фиксат',
-        removed: 'Елеминат',
-        renamed: 'Реденумит',
-        replaced: 'Мутат де ла',
-        replacedTo: 'Мутат ла',
-        publishedIn: 'Постат ын',
+        added: 'Адунаря',
+        changed: 'Модификаря',
+        removed: 'Ындепэртаре',
+        renamed: 'Реденумире',
+        replaced: 'Трансферат ла',
+        replacedTo: 'Трансферат де ла',
+        publishedIn: 'Публикаре',
         law: 'Лежя',
         from: 'де ла'
     ),
     appSearchDelegate: AppSearchDelegateLocalizations(
-        startSearch: 'Начинайте вводить',
-        noResults: 'Ничего не найдено',
-        back: 'Вернуться',
-        clear: 'Очистить'
+        startSearch: 'Ынчепець ши тастаць',
+        noResults: 'Нимик ну а фост гэсит',
+        back: 'Ду-те ынапой',
+        clear: 'Штергець'
     ),
     settingsRoute: SettingsRouteLocalizations(
         title: 'Сетэриле',
@@ -70,7 +70,7 @@ LocalizationValues localizationValuesMD = LocalizationValues(
         fontSizeLarge: 'маре'
     ),
     homeRoute: HomeRouteLocalizations(
-        noArticles: 'Ну екзистэ артикол',
+        noArticles: 'Ну екзистэ артиколе',
         noBookmarks: 'Ну екзистэ маркаӂе',
         chooseLanguage: 'Селектат лимба',
         settings: 'Сетэриле'

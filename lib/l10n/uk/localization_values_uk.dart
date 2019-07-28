@@ -26,54 +26,54 @@ LocalizationValues localizationValuesUK = LocalizationValues(
         amendments: 'Поправки'
     ),
     articleListView: ArticleListViewLocalizations(
-        emptyMessage: 'Ничего нет'
+        emptyMessage: 'Нічого немає'
     ),
     contentView: ContentViewLocalizations(
-        articles: 'Статьи'
+        articles: 'Статті'
     ),
     articleCard: ArticleCardLocalizations(
-        article: 'Статья',
+        article: 'Стаття',
         paragraph: 'Пункт',
-        share: 'Поделиться',
-        addToBookmarks: 'Добавить в закладки'
+        share: 'Поділитися',
+        addToBookmarks: 'Додати в закладки'
     ),
     amendmentCard: AmendmentCardLocalizations(
-        section: 'раздел',
+        section: 'розділ',
         chapter: 'глава',
-        article: 'статья',
+        article: 'стаття',
         paragraph: 'пункт',
-        subParagraph: 'подпункт',
-        part: 'часть',
-        sentence: 'предложение',
-        added: 'Дополнено',
-        changed: 'Изменено',
-        removed: 'Удалено',
-        renamed: 'Переименовано',
-        replaced: 'Перемещено из',
-        replacedTo: 'Перемещено в',
-        publishedIn: 'Опубликовано в',
+        subParagraph: 'підпункт',
+        part: 'частина',
+        sentence: 'пропозиція',
+        added: 'Доповнення',
+        changed: 'Зміна',
+        removed: 'Виняток',
+        renamed: 'Перейменування',
+        replaced: 'Перенесення в',
+        replacedTo: 'Перенесення з',
+        publishedIn: 'Публікація',
         law: 'Закон',
-        from: 'от'
+        from: 'від'
     ),
     appSearchDelegate: AppSearchDelegateLocalizations(
-        startSearch: 'Начинайте вводить',
-        noResults: 'Ничего не найдено',
-        back: 'Вернуться',
-        clear: 'Очистить'
+        startSearch: 'Починайте вводити',
+        noResults: 'Нічого не знайдено',
+        back: 'Повернутися',
+        clear: 'Очистити'
     ),
     settingsRoute: SettingsRouteLocalizations(
-        title: 'Настройки',
-        darkTheme: 'Темная тема',
-        fontSize: 'Размер шрифта',
-        fontSizeDefault: 'по умолчанию',
-        fontSizeMedium: 'средний',
-        fontSizeLarge: 'большой'
+        title: 'Установки',
+        darkTheme: 'Темна тема',
+        fontSize: 'Розмір шрифту',
+        fontSizeDefault: 'за замовчуванням',
+        fontSizeMedium: 'середній',
+        fontSizeLarge: 'великий'
     ),
     homeRoute: HomeRouteLocalizations(
-        noArticles: 'Нет статей',
-        noBookmarks: 'Нет закладок',
-        chooseLanguage: 'Выбрать язык',
-        settings: 'Настройки'
+        noArticles: 'Немає статей',
+        noBookmarks: 'Немає закладок',
+        chooseLanguage: 'Вибрати мову',
+        settings: 'Установки'
     ),
     amendmentListView: AmendmentListViewLocalizations()
 );
