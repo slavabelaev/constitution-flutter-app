@@ -93,7 +93,7 @@ class _AppState extends State<App> {
             ),
             title: _theme.textTheme.title.copyWith(
                 fontSize: 20.0 * fontSizeFactor,
-                height: 1.25,
+                height: 1.125,
                 color: white87
             ),
             subtitle: _theme.textTheme.subtitle.copyWith(
