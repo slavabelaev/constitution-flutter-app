@@ -14,7 +14,12 @@ class SettingsRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     localizations = AppLocalizations.of(context);
-    TextStyle _titleStyle = Theme.of(context).textTheme.title;
+    TextStyle _titleStyle = Theme.of(context).textTheme.title.copyWith(
+      fontSize: 18.0
+    );
+    TextStyle _dropdownMenuItemStyle = Theme.of(context).textTheme.body1.copyWith(
+      fontSize: 18.0
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -46,7 +51,7 @@ class SettingsRoute extends StatelessWidget {
                     DropdownMenuItem(
                       child: Text(
                         fontSizeFactorOption.title,
-                        style: Theme.of(context).textTheme.body1,
+                        style: _dropdownMenuItemStyle,
                       ),
                       value: fontSizeFactorOption.value,
                     )

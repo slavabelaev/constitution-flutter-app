@@ -78,7 +78,9 @@ class _HomeRouteState extends State<HomeRoute> {
     );
   }
 
-  TextStyle get _popupMenuItemStyle => Theme.of(context).textTheme.body1;
+  TextStyle get _menuItemStyle => Theme.of(context).textTheme.body1.copyWith(
+    fontSize: 18.0
+  );
 
   Widget _buildPopupMenu() {
     return PopupMenuButton(
@@ -98,14 +100,14 @@ class _HomeRouteState extends State<HomeRoute> {
             value: popupMenuOptions.chooseLanguage,
             child: Text(
               localizations.chooseLanguage,
-              style: _popupMenuItemStyle,
+              style: _menuItemStyle,
             ),
           ),
           PopupMenuItem(
             value: popupMenuOptions.settings,
             child: Text(
               localizations.settings,
-              style: _popupMenuItemStyle,
+              style: _menuItemStyle,
             ),
           )
         ]
@@ -124,15 +126,15 @@ class _HomeRouteState extends State<HomeRoute> {
         builder: (context) => SimpleDialog(
           children: <Widget>[
             SimpleDialogOption(
-              child: Text('Русский'),
-              onPressed: () => switchLocale('ru')
+              child: Text('Русский', style: _menuItemStyle),
+              onPressed: () => switchLocale('ru'),
             ),
             SimpleDialogOption(
-                child: Text('Молдавеняскэ'),
+                child: Text('Молдавеняскэ', style: _menuItemStyle),
                 onPressed: () => switchLocale('md')
             ),
             SimpleDialogOption(
-                child: Text('Український'),
+                child: Text('Український', style: _menuItemStyle),
                 onPressed: () => switchLocale('uk')
             )
           ],
