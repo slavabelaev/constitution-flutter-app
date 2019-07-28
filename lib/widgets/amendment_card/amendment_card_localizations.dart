@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class AmendmentCardLocalizations {
   final String section;
   final String chapter;
@@ -17,21 +19,21 @@ class AmendmentCardLocalizations {
   final String from;
 
   AmendmentCardLocalizations({
-    this.section,
-    this.chapter,
-    this.article,
-    this.paragraph,
-    this.subParagraph,
-    this.part,
-    this.sentence,
-    this.added,
-    this.changed,
-    this.removed,
-    this.renamed,
-    this.replaced,
-    this.replacedTo,
-    this.publishedIn,
-    this.law,
-    this.from
+    @required this.section,
+    @required this.chapter,
+    @required this.article,
+    @required this.paragraph,
+    @required this.subParagraph,
+    @required this.part,
+    @required this.sentence,
+    @required this.added,
+    @required this.changed,
+    @required this.removed,
+    @required this.renamed,
+    @required this.replaced,
+    @required this.replacedTo,
+    @required this.publishedIn,
+    @required this.law,
+    @required this.from
   });
 }

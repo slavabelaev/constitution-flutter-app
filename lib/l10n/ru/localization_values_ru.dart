@@ -64,12 +64,16 @@ LocalizationValues localizationValuesRU = LocalizationValues(
     settingsRoute: SettingsRouteLocalizations(
         title: 'Настройки',
         darkTheme: 'Темная тема',
-        fontSize: 'Размер шрифта'
+        fontSize: 'Размер шрифта',
+        fontSizeDefault: 'по умолчанию',
+        fontSizeMedium: 'средний',
+        fontSizeLarge: 'большой'
     ),
     homeRoute: HomeRouteLocalizations(
         noArticles: 'Нет статей',
         noBookmarks: 'Нет закладок',
         chooseLanguage: 'Выбрать язык',
         settings: 'Настройки'
-    )
+    ),
+    amendmentListView: AmendmentListViewLocalizations()
 );

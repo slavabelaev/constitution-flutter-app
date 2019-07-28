@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart';
+
 class ArticleListViewLocalizations {
   final emptyMessage;
 
   ArticleListViewLocalizations({
-    this.emptyMessage
+    @required this.emptyMessage
   });
 }

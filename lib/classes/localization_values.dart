@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'article.dart';
 import 'amendment.dart';
 import 'section.dart';
@@ -29,19 +30,19 @@ class LocalizationValues {
   final AppSearchDelegateLocalizations appSearchDelegate;
 
   LocalizationValues({
-    this.title,
-    this.preamble,
-    this.articles,
-    this.content,
-    this.amendments,
-    this.bottomNavigationBar,
-    this.articleCard,
-    this.articleListView,
-    this.contentView,
-    this.amendmentCard,
-    this.amendmentListView,
-    this.settingsRoute,
-    this.homeRoute,
-    this.appSearchDelegate
+    @required this.title,
+    @required this.preamble,
+    @required this.articles,
+    @required this.content,
+    @required this.amendments,
+    @required this.bottomNavigationBar,
+    @required this.articleCard,
+    @required this.articleListView,
+    @required this.contentView,
+    @required this.amendmentCard,
+    @required this.amendmentListView,
+    @required this.settingsRoute,
+    @required this.homeRoute,
+    @required this.appSearchDelegate
   });
 }

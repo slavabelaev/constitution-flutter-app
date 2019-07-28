@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart';
+
 class ContentViewLocalizations {
   final String articles;
 
   ContentViewLocalizations({
-    this.articles
+    @required this.articles
   });
 }

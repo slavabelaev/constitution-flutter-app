@@ -64,12 +64,16 @@ LocalizationValues localizationValuesMD = LocalizationValues(
     settingsRoute: SettingsRouteLocalizations(
         title: 'Сетэриле',
         darkTheme: 'Тема ынтунеката',
-        fontSize: 'Дименсиуня фонтулуй'
+        fontSize: 'Дименсиуня фонтулуй',
+        fontSizeDefault: 'ын мод имплицит',
+        fontSizeMedium: 'медие',
+        fontSizeLarge: 'маре'
     ),
     homeRoute: HomeRouteLocalizations(
         noArticles: 'Ну екзистэ артикол',
         noBookmarks: 'Ну екзистэ маркаӂе',
         chooseLanguage: 'Селектат лимба',
         settings: 'Сетэриле'
-    )
+    ),
+    amendmentListView: AmendmentListViewLocalizations()
 );

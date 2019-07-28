@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class HomeRouteLocalizations {
   final String noArticles;
   final String noBookmarks;
@@ -5,9 +7,9 @@ class HomeRouteLocalizations {
   final String settings;
 
   HomeRouteLocalizations({
-    this.noArticles,
-    this.noBookmarks,
-    this.chooseLanguage,
-    this.settings
+    @required this.noArticles,
+    @required this.noBookmarks,
+    @required this.chooseLanguage,
+    @required this.settings
   });
 }

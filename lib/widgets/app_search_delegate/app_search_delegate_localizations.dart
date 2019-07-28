@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class AppSearchDelegateLocalizations {
   final String startSearch;
   final String noResults;
@@ -5,9 +7,9 @@ class AppSearchDelegateLocalizations {
   final String clear;
 
   AppSearchDelegateLocalizations({
-    this.startSearch,
-    this.noResults,
-    this.back,
-    this.clear
+    @required this.startSearch,
+    @required this.noResults,
+    @required this.back,
+    @required this.clear
   });
 }

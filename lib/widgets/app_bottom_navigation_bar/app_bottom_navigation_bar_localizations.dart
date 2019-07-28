@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class AppBottomNavigationBarLocalizations {
   final String byTopic;
   final String articles;
@@ -5,9 +7,9 @@ class AppBottomNavigationBarLocalizations {
   final String amendments;
 
   AppBottomNavigationBarLocalizations({
-    this.byTopic,
-    this.articles,
-    this.bookmarks,
-    this.amendments
+    @required this.byTopic,
+    @required this.articles,
+    @required this.bookmarks,
+    @required this.amendments
   });
 }

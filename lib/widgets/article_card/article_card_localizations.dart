@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class ArticleCardLocalizations {
   final String article;
   final String paragraph;
@@ -5,9 +7,9 @@ class ArticleCardLocalizations {
   final String addToBookmarks;
 
   ArticleCardLocalizations({
-    this.article,
-    this.paragraph,
-    this.share,
-    this.addToBookmarks
+    @required this.article,
+    @required this.paragraph,
+    @required this.share,
+    @required this.addToBookmarks
   });
 }
