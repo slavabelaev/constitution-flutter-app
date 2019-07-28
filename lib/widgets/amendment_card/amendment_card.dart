@@ -109,19 +109,24 @@ class AmendmentCard extends StatelessWidget {
   }
 
  Widget _buildHeader(BuildContext context) {
-   SettingsModel settingsProvider = Provider.of<SettingsModel>(context);
+   SettingsModel settings = Provider.of<SettingsModel>(context);
    String languageCode;
-   if (settingsProvider.locale != null) {
-     languageCode = settingsProvider.locale.languageCode;
+   if (settings.locale != null) {
+     languageCode = settings.locale.languageCode;
    } else {
      languageCode = Localizations.localeOf(context).languageCode;
    }
    languageCode = languageCode == 'md' ? 'ro' : languageCode;
-   DateTime now = DateTime.now();
-   String formattedDate = DateFormat.yMMMMd(languageCode).format(now);
+   DateTime date = DateTime.parse(amendment.lawDateFrom);
+   String formattedDate = DateFormat.yMMMMd(languageCode).format(date);
     return ListTile(
-      title: Text('${localizations.law} ${amendment.lawNumber}', style: Theme.of(context).textTheme.title),
-      subtitle: Text('${localizations.from} ${formattedDate}'),
+      title: Text(
+        '${localizations.law} ${amendment.lawNumber}',
+        style: Theme.of(context).textTheme.title),
+      subtitle: Text(
+        '${localizations.from} ${formattedDate}',
+        style: Theme.of(context).textTheme.subtitle,
+      ),
     );
   }
 
