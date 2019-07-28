@@ -10,9 +10,10 @@ import '../../l10n/app_localizations.dart';
 import 'article_card_localizations.dart';
 
 class ArticleCard extends StatefulWidget {
-  ArticleCard(this.article);
+  ArticleCard(this.article, {this.highlight});
 
   final Article article;
+  final String highlight;
 
   @override
   _ArticleCardState createState() => _ArticleCardState();
@@ -37,6 +38,8 @@ class _ArticleCardState extends State<ArticleCard> {
       fontSize: Theme.of(context).textTheme.body1.fontSize
   );
 
+  TextStyle get _textStyle => Theme.of(context).textTheme.body1;
+
   Widget _buildSubParagraph(SubParagraph subParagraph, bool isLast) {
     return Container(
       child: Text.rich(TextSpan(
@@ -45,7 +48,7 @@ class _ArticleCardState extends State<ArticleCard> {
                 text: '${subParagraph.title}) ',
                 style: _subParagraphTitleStyle
             ),
-            TextSpan(text: '${subParagraph.text}')
+            _buildHighlightedTextSpan(subParagraph.text)
           ]
       )),
       margin: EdgeInsets.only(bottom: isLast ? 0 : 8.0),
@@ -169,10 +172,56 @@ class _ArticleCardState extends State<ArticleCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: textElements.map(
             (text) => Container(
-              child: Text(text, style: Theme.of(context).textTheme.body1),
+              child: Text.rich(
+                _buildHighlightedTextSpan(text)
+              ),
+              //child: Text(text),
               margin: EdgeInsets.only(bottom: text != textElements.last ? 16.0 : 0),
             )
         ).toList()
+    );
+  }
+
+  TextSpan _buildHighlightedTextSpan(String text) {
+    if (widget.highlight == null)
+      return TextSpan(text: text);
+
+    RegExp splitter = RegExp(
+        widget.highlight,
+        caseSensitive: false,
+        multiLine: true
+    );
+    List<TextSpan> children = [];
+
+    TextSpan _buildMatch(String text) {
+      return TextSpan(text: text, style: _textStyle.copyWith(
+        backgroundColor: Theme.of(context).highlightColor
+      ));
+    }
+
+    TextSpan _buildNonMatch(String text) {
+      return TextSpan(text: text, style: _textStyle);
+    }
+
+    text.splitMapJoin(
+      splitter,
+      onMatch: (match) {
+        String matchText = match.group(0);
+        children.add(
+          _buildMatch(matchText)
+        );
+        return matchText;
+      },
+      onNonMatch: (nonMatchText) {
+        children.add(
+          _buildNonMatch(nonMatchText)
+        );
+        return nonMatchText;
+      }
+    );
+
+    return TextSpan(
+      children: children
     );
   }
 

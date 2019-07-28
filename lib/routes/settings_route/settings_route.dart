@@ -43,9 +43,9 @@ class SettingsRoute extends StatelessWidget {
               trailing: DropdownButton(
                 value: settings.fontSizeFactor,
                 items: [
-                  FontSizeFactorOption(title: 'по умолчанию', value: 1.0),
-                  FontSizeFactorOption(title: 'средний', value: 1.125),
-                  FontSizeFactorOption(title: 'большой', value: 1.25),
+                  FontSizeFactorOption(title: localizations.settingsRoute.fontSizeDefault, value: 1.0),
+                  FontSizeFactorOption(title: localizations.settingsRoute.fontSizeMedium, value: 1.125),
+                  FontSizeFactorOption(title: localizations.settingsRoute.fontSizeLarge, value: 1.25),
                 ]
                   .map((fontSizeFactorOption) =>
                     DropdownMenuItem(

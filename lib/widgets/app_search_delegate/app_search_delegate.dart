@@ -102,6 +102,7 @@ class AppSearchDelegate extends SearchDelegate<int> {
     return ArticleListView(
         suggestions,
         emptyMessage: _getEmptyMessage(context),
+        highlight: query,
         onItemTap: () => FocusScope.of(context).unfocus(),
     );
   }
@@ -115,6 +116,7 @@ class AppSearchDelegate extends SearchDelegate<int> {
 
     return ArticleListView(
       suggestions,
+      highlight: query,
       emptyMessage: _getEmptyMessage(context),
     );
   }

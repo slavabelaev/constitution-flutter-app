@@ -5,12 +5,18 @@ import '../../l10n/app_localizations.dart';
 import 'article_list_view_localizations.dart';
 
 class ArticleListView extends StatelessWidget {
-  ArticleListView(this.articles, {this.emptyMessage, this.controller, this.onItemTap});
+  ArticleListView(this.articles, {
+    this.highlight,
+    this.emptyMessage,
+    this.controller,
+    this.onItemTap,
+  });
 
   final List<Article> articles;
   final String emptyMessage;
   final ScrollController controller;
   final VoidCallback onItemTap;
+  final String highlight;
 
   ArticleListViewLocalizations localizations;
 
@@ -26,7 +32,10 @@ class ArticleListView extends StatelessWidget {
   Widget _buildItem(BuildContext context, int index) {
     return Padding(
         child: InkWell(
-          child: ArticleCard(articles[index]),
+          child: ArticleCard(
+            articles[index],
+            highlight: highlight
+          ),
           onTap: onItemTap,
         ),
         padding: EdgeInsets.only(
