@@ -14,12 +14,15 @@ class FavoritesModel with ChangeNotifier {
     return itemIds.where((item) => item.uid == id.uid).isNotEmpty;
   }
 
-  void _load() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.getStringList('favoriteIds').forEach(
-      (item) => itemIds.add(Uid(item))
-    );
-    notifyListeners();
+  void _load() {
+     SharedPreferences
+       .getInstance()
+       .then((SharedPreferences prefs) {
+           prefs.getStringList('favoriteIds').forEach(
+             (item) => itemIds.add(Uid(item))
+           );
+           notifyListeners();
+       });
   }
 
   List<Article> filter(List<Article> articles) {
