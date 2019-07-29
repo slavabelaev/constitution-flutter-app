@@ -1,0 +1,42 @@
+{
+  "previews": {
+    "directory": "previews",
+    "main": {
+      "path": "index.png"
+    },
+    "images": [
+      {
+        "path": "index.png",
+        "title": "Contents"
+      },
+      {
+        "path": "articles.png",
+        "title": "List of articles"
+      },
+      {
+        "path": "section.png",
+        "title": "Section of articles"
+      },
+      {
+        "path": "bookmarks.png",
+        "title": "Bookmarks"
+      },
+      {
+        "path": "amendments.png",
+        "title": "Amendments"
+      },
+      {
+        "path": "search.png",
+        "title": "Search"
+      },
+      {
+        "path": "languages.png",
+        "title": "Languages"
+      },
+      {
+        "path": "settings.png",
+        "title": "Settings"
+      }
+    ]
+  },
+}
